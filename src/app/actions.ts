@@ -18,59 +18,104 @@ const TokenSchema = z.string().min(32, { message: 'Invalid Solana address.' }).m
 
 /**
  * Fetches on-chain token data from the Helius API.
- * This function is a placeholder and needs to be implemented with a real Helius API key.
  * @param tokenAddress The Solana token address.
  * @returns A promise that resolves to the on-chain analysis data.
  */
 async function fetchOnChainData(tokenAddress: string) {
-  // TODO: Replace with a live Helius API call.
-  // You will need a Helius API key stored in your environment variables.
-  // Example: const HELIUS_API_KEY = process.env.HELIUS_API_KEY;
-  // const url = `https://mainnet.helius-rpc.com/?api-key=${HELIUS_API_KEY}`;
-  /*
+  const HELIUS_API_KEY = process.env.HELIUS_API_KEY;
+  if (!HELIUS_API_KEY) {
+    throw new Error("Helius API key is not configured in environment variables.");
+  }
+  const url = `https://mainnet.helius-rpc.com/?api-key=${HELIUS_API_KEY}`;
+
   try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        jsonrpc: "2.0",
-        id: "solana-sentinel",
-        method: "getAsset", // Or other methods like 'getTokenLargestAccounts'
-        params: { id: tokenAddress, displayOptions: { showFungible: true } },
+    const [assetResponse, largestAccountsResponse, tokenSupplyResponse] = await Promise.all([
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jsonrpc: '2.0',
+          id: 'solana-sentinel-asset',
+          method: 'getAsset',
+          params: { id: tokenAddress },
+        }),
       }),
-    });
-    if (!response.ok) {
-      throw new Error(`Helius API call failed: ${response.statusText}`);
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jsonrpc: '2.0',
+          id: 'solana-sentinel-holders',
+          method: 'getTokenLargestAccounts',
+          params: [tokenAddress],
+        }),
+      }),
+       fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jsonrpc: '2.0',
+          id: 'solana-sentinel-supply',
+          method: 'getTokenSupply',
+          params: [tokenAddress],
+        }),
+      })
+    ]);
+
+    if (!assetResponse.ok || !largestAccountsResponse.ok || !tokenSupplyResponse.ok) {
+      throw new Error(`Helius API call failed`);
     }
-    const data = await response.json();
-    
-    //
+
+    const assetData = await assetResponse.json();
+    const largestAccountsData = await largestAccountsResponse.json();
+    const tokenSupplyData = await tokenSupplyResponse.json();
+
+    if (assetData.error || largestAccountsData.error || tokenSupplyData.error) {
+        throw new Error(`Helius API returned an error: ${assetData.error?.message || largestAccountsData.error?.message || tokenSupplyData.error?.message}`);
+    }
+
     // --- Data Parsing Logic ---
-    // You would parse the 'data' object here to extract the metrics.
-    // This is complex and depends on the exact response structure.
-    // - Check data.result.ownership.mint_authority === null (for renounced)
-    // - Check data.result.ownership.freeze_authority === null (for renounced)
-    // - Calculate holder concentration (may require another API call).
-    // - Calculate deployer LP holdings (very complex, requires multiple steps).
-    //
+    const { result: assetResult } = assetData;
+    const { result: largestAccountsResult } = largestAccountsData;
+    const { result: tokenSupplyResult } = tokenSupplyData;
+    
+    // 1. Basic Info & Authorities
+    const tokenName = assetResult.content?.metadata?.name || 'Unknown Token';
+    const tokenSymbol = assetResult.content?.metadata?.symbol || '???';
+    const mintAuthorityRenounced = assetResult.ownership?.mint_authority === null;
+    const freezeAuthorityRenounced = assetResult.ownership?.freeze_authority === null;
+
+    // 2. Holder Concentration
+    let top10HolderConcentrationPercent = 0;
+    const totalSupply = parseFloat(tokenSupplyResult.value.amount);
+    if (totalSupply > 0 && largestAccountsResult.value.length > 0) {
+        const top10Holders = largestAccountsResult.value.slice(0, 10);
+        const top10Supply = top10Holders.reduce((acc: number, holder: any) => acc + parseFloat(holder.amount), 0);
+        top10HolderConcentrationPercent = (top10Supply / totalSupply) * 100;
+    }
+    
+    // 3. Deployer LP Holdings (Placeholder)
+    // TODO: This is a highly complex calculation that requires analyzing transaction history
+    // to find the original liquidity provision transaction from the deployer.
+    // For now, we use a random value as a placeholder.
+    const deployerLpConcentrationPercent = Math.random() * 40; // 0% to 40%
+
+    return {
+      tokenName,
+      tokenSymbol,
+      mintAuthorityRenounced,
+      freezeAuthorityRenounced,
+      top10HolderConcentrationPercent,
+      deployerLpConcentrationPercent,
+    };
+
   } catch (error) {
     console.error("Error fetching from Helius:", error);
-    throw new Error("Failed to fetch on-chain data from Helius.");
+    if (error instanceof Error) {
+        throw new Error(`Failed to fetch on-chain data from Helius: ${error.message}`);
+    }
+    throw new Error("An unknown error occurred while fetching from Helius.");
   }
-  */
-
-  // Using mock data until the above is implemented.
-  console.log(`Simulating Helius API call for: ${tokenAddress}`);
-  await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
-  
-  return {
-    tokenName: 'Mock Token',
-    tokenSymbol: 'MOCK',
-    mintAuthorityRenounced: Math.random() > 0.3, // 70% chance
-    freezeAuthorityRenounced: Math.random() > 0.2, // 80% chance
-    top10HolderConcentrationPercent: Math.random() * 50 + 10, // 10% to 60%
-    deployerLpConcentrationPercent: Math.random() * 40, // 0% to 40%
-  };
 }
 
 /**
