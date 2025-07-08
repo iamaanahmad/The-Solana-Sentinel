@@ -4,7 +4,7 @@ import type { SentinelReportData } from '@/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ScoreDisplay } from './score-display';
 import { Separator } from './ui/separator';
-import { Bot, BarChart4, Smile, Droplets, ShieldCheck, Snowflake, Users } from 'lucide-react';
+import { Bot, BarChart4, Smile, Droplets, ShieldCheck, Snowflake, Users, Landmark } from 'lucide-react';
 import { MetricCard } from './metric-card';
 
 export function SentinelReport({ report }: { report: SentinelReportData }) {
@@ -64,7 +64,7 @@ export function SentinelReport({ report }: { report: SentinelReportData }) {
         
         <div>
             <h3 className="text-xl font-semibold mb-4 flex items-center gap-2 text-primary"><BarChart4 />On-Chain Forensics</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                 <MetricCard 
                     title="Mint Authority"
                     value={report.onChainAnalysis.mintAuthorityRenounced ? 'Renounced' : 'Active'}
@@ -80,18 +80,25 @@ export function SentinelReport({ report }: { report: SentinelReportData }) {
                     icon={<Snowflake />}
                 />
                 <MetricCard 
-                    title="Top Holder"
-                    value={`${report.onChainAnalysis.topHolderPercentage.toFixed(2)}%`}
-                    status={report.onChainAnalysis.topHolderPercentage > 20 ? 'warning' : 'success'}
+                    title="Top 10 Holders"
+                    value={`${report.onChainAnalysis.top10HolderPercentage.toFixed(2)}%`}
+                    status={report.onChainAnalysis.top10HolderPercentage > 20 ? 'warning' : 'success'}
                     description="Ownership concentration risk."
                     icon={<Users />}
                 />
                  <MetricCard 
-                    title="Liquidity"
+                    title="Total Liquidity"
                     value={`$${report.onChainAnalysis.liquidity.totalValue.toLocaleString()}`}
                     status={report.onChainAnalysis.liquidity.isLocked ? 'success' : 'warning'}
                     description={report.onChainAnalysis.liquidity.isLocked ? 'Pool is locked.' : 'Pool is unlocked.'}
                     icon={<Droplets />}
+                />
+                <MetricCard 
+                    title="Deployer Liquidity"
+                    value={`${report.onChainAnalysis.liquidity.deployerLpPercentage.toFixed(2)}%`}
+                    status={report.onChainAnalysis.liquidity.deployerLpPercentage > 10 ? 'warning' : 'success'}
+                    description="Portion of LP held by deployer."
+                    icon={<Landmark />}
                 />
             </div>
         </div>

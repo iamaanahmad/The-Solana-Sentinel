@@ -23,20 +23,22 @@ export async function analyzeToken(prevState: FormState, formData: FormData): Pr
   }
 
   try {
-    // Simulate network delay for API calls
+    // Simulate network delay for API calls to Helius and Nosana
     await sleep(2000);
 
-    // --- Mock Data Generation ---
+    // --- Mock Data Generation (simulating Helius API) ---
     const onChainAnalysis = {
       mintAuthorityRenounced: Math.random() > 0.3, // 70% chance of being renounced
       freezeAuthorityRenounced: Math.random() > 0.2, // 80% chance
-      topHolderPercentage: Math.random() * 50 + 5, // 5% to 55%
+      top10HolderPercentage: Math.random() * 50 + 10, // 10% to 60%
       liquidity: {
         totalValue: Math.floor(Math.random() * 500000) + 50000,
         isLocked: Math.random() > 0.4, // 60% chance
+        deployerLpPercentage: Math.random() * 40, // 0% to 40% held by deployer
       },
     };
 
+    // --- Mock Data Generation (simulating Nosana job for VADER sentiment) ---
     const sentimentScore = Math.random() * 2 - 1; // -1 to 1
     let disposition: 'Positive' | 'Neutral' | 'Negative' = 'Neutral';
     if (sentimentScore > 0.3) {
@@ -54,9 +56,10 @@ export async function analyzeToken(prevState: FormState, formData: FormData): Pr
     let score = 100;
     if (!onChainAnalysis.mintAuthorityRenounced) score -= 30;
     if (!onChainAnalysis.freezeAuthorityRenounced) score -= 20;
-    if (onChainAnalysis.topHolderPercentage > 40) score -= 25;
-    else if (onChainAnalysis.topHolderPercentage > 20) score -= 15;
+    if (onChainAnalysis.top10HolderPercentage > 40) score -= 25;
+    else if (onChainAnalysis.top10HolderPercentage > 20) score -= 15;
     if (!onChainAnalysis.liquidity.isLocked) score -= 15;
+    if (onChainAnalysis.liquidity.deployerLpPercentage > 20) score -= 20;
     if (onChainAnalysis.liquidity.totalValue < 100000) score -= 10;
     
     if(sentimentAnalysis.disposition === 'Negative') score -= 20;
@@ -66,7 +69,7 @@ export async function analyzeToken(prevState: FormState, formData: FormData): Pr
 
     // --- AI Summary Generation ---
     const aiInput = {
-      onChainAnalysis: `Mint Authority Renounced: ${onChainAnalysis.mintAuthorityRenounced}, Freeze Authority Renounced: ${onChainAnalysis.freezeAuthorityRenounced}, Top Holder Owns: ${onChainAnalysis.topHolderPercentage.toFixed(2)}%, Liquidity Locked: ${onChainAnalysis.liquidity.isLocked}, Liquidity Value: $${onChainAnalysis.liquidity.totalValue.toLocaleString()}`,
+      onChainAnalysis: `Mint Authority Renounced: ${onChainAnalysis.mintAuthorityRenounced}, Freeze Authority Renounced: ${onChainAnalysis.freezeAuthorityRenounced}, Top 10 Holders Own: ${onChainAnalysis.top10HolderPercentage.toFixed(2)}%, Liquidity Locked: ${onChainAnalysis.liquidity.isLocked}, Liquidity Value: $${onChainAnalysis.liquidity.totalValue.toLocaleString()}, Deployer LP Share: ${onChainAnalysis.liquidity.deployerLpPercentage.toFixed(2)}%`,
       sentimentAnalysis: `Overall sentiment is ${sentimentAnalysis.disposition} (Score: ${sentimentAnalysis.score.toFixed(2)})`,
       sentinelScore: sentinelScore,
     };

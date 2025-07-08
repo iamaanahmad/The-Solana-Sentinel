@@ -5,10 +5,11 @@ export interface SentinelReportData {
   onChainAnalysis: {
     mintAuthorityRenounced: boolean;
     freezeAuthorityRenounced: boolean;
-    topHolderPercentage: number;
+    top10HolderPercentage: number;
     liquidity: {
       totalValue: number;
       isLocked: boolean;
+      deployerLpPercentage: number;
     };
   };
   sentimentAnalysis: {
