@@ -49,7 +49,7 @@ Open the `nosana.json` file in this directory. Find the `image` field and replac
 Now you're ready to deploy the job! Run the following command from this `nosana-job` directory:
 
 ```bash
-nosana job create
+nosana job publish
 ```
 
 The CLI will read your `nosana.json` file and deploy the job. If successful, it will output a **Job Address** (which is your Job ID). It will look something like this: `job-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
