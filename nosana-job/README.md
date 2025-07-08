@@ -18,7 +18,7 @@ First, you need to build the Docker image that contains your Python script and i
 In your terminal, navigate to this `nosana-job` directory and run the following command. Replace `your-docker-hub-username` with your actual Docker Hub username.
 
 ```bash
-docker build -t your-docker-hub-username/solana-sentinel-sentiment:v1 .
+docker build -t ashqking/solana-sentinel-sentiment:v1 .
 ```
 
 ### Step 2: Push the Image to Docker Hub
@@ -26,7 +26,7 @@ docker build -t your-docker-hub-username/solana-sentinel-sentiment:v1 .
 Next, upload the image you just built to Docker Hub. This makes it accessible to the Nosana Network.
 
 ```bash
-docker push your-docker-hub-username/solana-sentinel-sentiment:v1
+docker push ashqking/solana-sentinel-sentiment:v1
 ```
 *(If you are not already, you may need to run `docker login` first.)*
 
@@ -39,7 +39,7 @@ Open the `nosana.json` file in this directory. Find the `image` field and replac
     ...
     "job": {
         ...
-        "image": "your-docker-hub-username/solana-sentinel-sentiment:v1"
+        "image": "ashqking/solana-sentinel-sentiment:v1"
     }
 }
 ```
