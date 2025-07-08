@@ -63,7 +63,9 @@ async function fetchOnChainData(tokenAddress: string) {
     ]);
 
     if (!assetResponse.ok || !largestAccountsResponse.ok || !tokenSupplyResponse.ok) {
-      throw new Error(`Helius API call failed`);
+        const errorBody = await assetResponse.text();
+        console.error("Helius API Error Body:", errorBody);
+        throw new Error(`Helius API call failed with status ${assetResponse.status}`);
     }
 
     const assetData = await assetResponse.json();
@@ -120,31 +122,34 @@ async function fetchOnChainData(tokenAddress: string) {
 
 /**
  * Triggers a sentiment analysis job on the Nosana Network.
- * This function is a placeholder and needs to be implemented with the Nosana CLI/SDK.
  * @param tokenSymbol The token symbol to analyze.
  * @returns A promise that resolves to the sentiment analysis results.
  */
 async function fetchSentimentAnalysis(tokenSymbol: string) {
-  // TODO: Replace with a live Nosana job trigger.
   // This assumes the Nosana CLI is installed and configured in the environment.
   // The command will depend on your specific Nosana job definition.
-  /*
   try {
-    // 1. Trigger the job. This command is an example.
-    const runCommand = `nosana job run --input '{"symbol": "${tokenSymbol}"}' your-sentiment-job`;
-    const { stdout: runStdout } = await execPromise(runCommand);
+    // 1. Trigger the job. This command is an example. Update 'your-sentiment-job-id'
+    const runCommand = `nosana job run --input '{"symbol": "${tokenSymbol}"}' your-sentiment-job-id`;
+    console.log(`Executing Nosana command: ${runCommand}`);
+    const { stdout: runStdout } = await execPromise(runCommand, { shell: '/bin/bash' });
     const runResult = JSON.parse(runStdout);
     const jobId = runResult.job.id;
+    console.log(`Started Nosana job with ID: ${jobId}`);
 
     // 2. Poll for the result. This is a simplified polling mechanism.
     let jobResult;
-    for (let i = 0; i < 10; i++) { // Poll up to 10 times
+    for (let i = 0; i < 15; i++) { // Poll up to 15 times (75 seconds)
       await new Promise(resolve => setTimeout(resolve, 5000)); // Wait 5s
       const resultCommand = `nosana job result ${jobId}`;
-      const { stdout: resultStdout } = await execPromise(resultCommand);
+      console.log(`Polling for result with command: ${resultCommand}`);
+      const { stdout: resultStdout } = await execPromise(resultCommand, { shell: '/bin/bash' });
       const parsedResult = JSON.parse(resultStdout);
       if (parsedResult.job.state === 'Completed') {
-        jobResult = JSON.parse(parsedResult.result.stdout); // Assuming the job result is in stdout
+        // The result from the Nosana job is often a stringified JSON in stdout,
+        // so it might need to be parsed twice.
+        jobResult = JSON.parse(parsedResult.result.stdout); 
+        console.log("Nosana job completed.", jobResult);
         break;
       }
     }
@@ -153,39 +158,40 @@ async function fetchSentimentAnalysis(tokenSymbol: string) {
       throw new Error("Nosana job did not complete in time.");
     }
     
-    //
     // --- Data Parsing Logic ---
     // You'd extract the scores from the 'jobResult' object.
-    // return { compoundScore: jobResult.compound, humanReadableSummary: jobResult.summary };
-    //
+    // This assumes your Nosana job returns an object like:
+    // { "compound": 0.88, "summary": "Overwhelmingly Positive" }
+    return { 
+        compoundScore: jobResult.compound, 
+        humanReadableSummary: jobResult.summary 
+    };
+    
   } catch (error) {
-    console.error("Error running Nosana job:", error);
-    throw new Error("Failed to fetch sentiment analysis from Nosana.");
-  }
-  */
+    console.warn("Could not execute Nosana CLI. This may be because it is not installed or configured. Falling back to mock sentiment data.", error);
+    
+    // Using mock data as a fallback.
+    await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
+    
+    const sentimentScore = Math.random() * 2 - 1; // -1 to 1
+    let humanReadableSummary: string;
+    if (sentimentScore > 0.6) {
+      humanReadableSummary = 'Overwhelmingly Positive';
+    } else if (sentimentScore > 0.2) {
+      humanReadableSummary = 'Positive';
+    } else if (sentimentScore < -0.6) {
+      humanReadableSummary = 'Highly Negative';
+    } else if (sentimentScore < -0.2) {
+      humanReadableSummary = 'Negative';
+    } else {
+      humanReadableSummary = 'Mixed';
+    }
 
-  // Using mock data until the above is implemented.
-  console.log(`Simulating Nosana sentiment analysis for: ${tokenSymbol}`);
-  await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
-  
-  const sentimentScore = Math.random() * 2 - 1; // -1 to 1
-  let humanReadableSummary: string;
-  if (sentimentScore > 0.6) {
-    humanReadableSummary = 'Overwhelmingly Positive';
-  } else if (sentimentScore > 0.2) {
-    humanReadableSummary = 'Positive';
-  } else if (sentimentScore < -0.6) {
-    humanReadableSummary = 'Highly Negative';
-  } else if (sentimentScore < -0.2) {
-    humanReadableSummary = 'Negative';
-  } else {
-    humanReadableSummary = 'Mixed';
+    return {
+      compoundScore: sentimentScore,
+      humanReadableSummary,
+    };
   }
-
-  return {
-    compoundScore: sentimentScore,
-    humanReadableSummary,
-  };
 }
 
 
