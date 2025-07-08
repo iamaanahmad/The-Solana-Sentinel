@@ -126,11 +126,15 @@ async function fetchOnChainData(tokenAddress: string) {
  * @returns A promise that resolves to the sentiment analysis results.
  */
 async function fetchSentimentAnalysis(tokenSymbol: string) {
-  // This assumes the Nosana CLI is installed and configured in the environment.
-  // The command will depend on your specific Nosana job definition.
+  const NOSANA_JOB_ID = process.env.NOSANA_JOB_ID;
+  if (!NOSANA_JOB_ID || NOSANA_JOB_ID === 'your-sentiment-job-id') {
+      console.warn("Nosana Job ID is not configured. Falling back to mock sentiment data.");
+      return generateMockSentiment();
+  }
+  
   try {
-    // 1. Trigger the job. This command is an example. Update 'your-sentiment-job-id'
-    const runCommand = `nosana job run --input '{"symbol": "${tokenSymbol}"}' your-sentiment-job-id`;
+    // 1. Trigger the job.
+    const runCommand = `nosana job run --input '{"symbol": "${tokenSymbol}"}' ${NOSANA_JOB_ID}`;
     console.log(`Executing Nosana command: ${runCommand}`);
     const { stdout: runStdout } = await execPromise(runCommand, { shell: '/bin/bash' });
     const runResult = JSON.parse(runStdout);
@@ -159,8 +163,7 @@ async function fetchSentimentAnalysis(tokenSymbol: string) {
     }
     
     // --- Data Parsing Logic ---
-    // You'd extract the scores from the 'jobResult' object.
-    // This assumes your Nosana job returns an object like:
+    // Assumes your Nosana job returns an object like:
     // { "compound": 0.88, "summary": "Overwhelmingly Positive" }
     return { 
         compoundScore: jobResult.compound, 
@@ -169,8 +172,11 @@ async function fetchSentimentAnalysis(tokenSymbol: string) {
     
   } catch (error) {
     console.warn("Could not execute Nosana CLI. This may be because it is not installed or configured. Falling back to mock sentiment data.", error);
-    
-    // Using mock data as a fallback.
+    return generateMockSentiment();
+  }
+}
+
+async function generateMockSentiment() {
     await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
     
     const sentimentScore = Math.random() * 2 - 1; // -1 to 1
@@ -191,7 +197,6 @@ async function fetchSentimentAnalysis(tokenSymbol: string) {
       compoundScore: sentimentScore,
       humanReadableSummary,
     };
-  }
 }
 
 

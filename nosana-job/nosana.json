@@ -1,0 +1,12 @@
+{
+    "name": "solana-sentinel-sentiment-v1",
+    "version": "0.1.0",
+    "description": "AI sentiment analysis for Solana tokens.",
+    "trigger": {
+        "type": "http"
+    },
+    "job": {
+        "command": "python sentiment_analysis.py",
+        "image": "your-docker-hub-username/your-job-image-name:latest"
+    }
+}
