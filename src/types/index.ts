@@ -1,19 +1,24 @@
 export interface SentinelReportData {
   tokenAddress: string;
+  tokenName: string;
+  tokenSymbol: string;
   sentinelScore: number;
-  aiSummary: string;
+  aiAnalysis: {
+    riskLevel: 'Low' | 'Medium' | 'High';
+    onChainRisk: {
+      holderConcentrationRisk: 'Low' | 'Medium' | 'High';
+      deployerLpHoldingsRisk: 'Low' | 'Medium' | 'High';
+    };
+    finalVerdict: string;
+  };
   onChainAnalysis: {
     mintAuthorityRenounced: boolean;
     freezeAuthorityRenounced: boolean;
-    top10HolderPercentage: number;
-    liquidity: {
-      totalValue: number;
-      isLocked: boolean;
-      deployerLpPercentage: number;
-    };
+    top10HolderConcentrationPercent: number;
+    deployerLpConcentrationPercent: number;
   };
   sentimentAnalysis: {
-    score: number;
-    disposition: 'Positive' | 'Neutral' | 'Negative';
+    compoundScore: number;
+    humanReadableSummary: string;
   };
 }
