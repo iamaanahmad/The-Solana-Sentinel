@@ -1,12 +1,11 @@
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState, useEffect } from 'react';
 import { analyzeToken, type FormState } from './actions';
 import { TokenForm } from '@/components/token-form';
 import { SentinelReport } from '@/components/sentinel-report';
 import { Logo } from '@/components/logo';
 import { Card, CardContent } from '@/components/ui/card';
-import { useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { AlertTriangle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -17,7 +16,7 @@ const initialState: FormState = {
 };
 
 export default function Home() {
-  const [state, formAction] = useFormState(analyzeToken, initialState);
+  const [state, formAction] = useActionState(analyzeToken, initialState);
   const { toast } = useToast();
 
   useEffect(() => {
