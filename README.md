@@ -1,8 +1,12 @@
 # The Solana Sentinel
 
+<<<<<<< HEAD
 <p align="center">
   <img src="https://raw.githubusercontent.com/ashish-q/The-Solana-Sentinel/main/public/logo.png" alt="Solana Sentinel Logo" width="150">
 </p>
+=======
+![The-Solana-Sentinel](https://i.ibb.co/5hMp2mkq/image.png)
+>>>>>>> 0e4b637ce7010271778724c61f47137da877b7e2
 
 <h2 align="center">Your AI-Powered Shield Against Risky Tokens on the Solana Blockchain</h2>
 
@@ -47,8 +51,13 @@ Follow these instructions to get a local copy up and running for development and
 ### 1. Clone the Repository
 
 ```bash
+<<<<<<< HEAD
 git clone https://github.com/your-username/solana-sentinel.git
 cd solana-sentinel
+=======
+git clone https://github.com/iamaanahmad/The-Solana-Sentinel.git
+cd The-Solana-Sentinel
+>>>>>>> 0e4b637ce7010271778724c61f47137da877b7e2
 ```
 
 ### 2. Install Dependencies
@@ -148,4 +157,8 @@ This project is licensed under the MIT License.
 
 <p align="center">
   Made with ❤️ for the future of decentralized AI.
+<<<<<<< HEAD
 </p>
+=======
+</p>
+>>>>>>> 0e4b637ce7010271778724c61f47137da877b7e2
