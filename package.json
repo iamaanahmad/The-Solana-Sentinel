@@ -39,10 +39,6 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
-<<<<<<< HEAD
-=======
-    "docker": "^1.0.0",
->>>>>>> 0e4b637ce7010271778724c61f47137da877b7e2
     "dotenv": "^16.5.0",
     "embla-carousel-react": "^8.6.0",
     "firebase": "^11.9.1",
