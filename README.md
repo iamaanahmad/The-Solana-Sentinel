@@ -112,7 +112,7 @@ Open `nosana-job/nosana.json` and replace the placeholder `image` value with the
 **d. Publish the Job to Nosana**
 This command deploys your job and returns its unique ID.
 ```bash
-nosana job publish
+nosana job post
 ```
 
 **e. Update Environment File**

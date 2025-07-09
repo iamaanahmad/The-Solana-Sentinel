@@ -49,7 +49,7 @@ Open the `nosana.json` file in this directory. Find the `image` field and replac
 Now you're ready to deploy the job! Run the following command from this `nosana-job` directory:
 
 ```bash
-nosana job publish
+nosana job post --market 7AtiXMSH6R1jjBxrcYjehCkkSF7zvYWte63gwEDBcGHq --timeout 300
 ```
 
 The CLI will read your `nosana.json` file and deploy the job. If successful, it will output a **Job Address** (which is your Job ID). It will look something like this: `job-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
@@ -61,6 +61,7 @@ Copy the **Job Address** from the previous step. Open the `.env` file in the roo
 ```env
 HELIUS_API_KEY="..."
 NOSANA_JOB_ID="job-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # <-- PASTE YOUR ID HERE
+GEMINI_API_KEY="..."
 ```
 
 ---
