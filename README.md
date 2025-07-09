@@ -6,6 +6,11 @@
 
 <h2 align="center">Your AI-Powered Shield Against Risky Tokens on the Solana Blockchain</h2>
 
+<div align="center">
+  <h3>🏆 Submission for the Nosana Builders Challenge: Agents 101 🏆</h3>
+  <p>This project was proudly built for the <a href="https://earn.superteam.fun/listings/hackathons/nosana-builders-challenge-agents-101/" target="_blank" rel="noopener noreferrer">Nosana Agent Challenge</a>, showcasing the power of combining Web3 technologies like Solana and Nosana's decentralized compute network to build powerful, trustless applications.</p>
+</div>
+
 <p align="center">
   <strong>The Solana Sentinel</strong> is a cutting-edge web application that provides real-time, AI-driven risk analysis for Solana tokens. By synthesizing live on-chain data with decentralized AI sentiment analysis, it generates a comprehensive "Sentinel Score" to help users identify potentially malicious projects before they invest.
 </p>
@@ -112,7 +117,7 @@ Open `nosana-job/nosana.json` and replace the placeholder `image` value with the
 **d. Publish the Job to Nosana**
 This command deploys your job and returns its unique ID.
 ```bash
-nosana job post
+nosana job publish
 ```
 
 **e. Update Environment File**
