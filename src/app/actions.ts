@@ -136,7 +136,7 @@ async function fetchSentimentAnalysis(tokenSymbol: string) {
     // 1. Trigger the job.
     const runCommand = `nosana job run --input '{"symbol": "${tokenSymbol}"}' ${NOSANA_JOB_ID}`;
     console.log(`Executing Nosana command: ${runCommand}`);
-    const { stdout: runStdout } = await execPromise(runCommand, { shell: '/bin/bash' });
+    const { stdout: runStdout } = await execPromise(runCommand);
     const runResult = JSON.parse(runStdout);
     const jobId = runResult.job.id;
     console.log(`Started Nosana job with ID: ${jobId}`);
@@ -147,7 +147,7 @@ async function fetchSentimentAnalysis(tokenSymbol: string) {
       await new Promise(resolve => setTimeout(resolve, 5000)); // Wait 5s
       const resultCommand = `nosana job result ${jobId}`;
       console.log(`Polling for result with command: ${resultCommand}`);
-      const { stdout: resultStdout } = await execPromise(resultCommand, { shell: '/bin/bash' });
+      const { stdout: resultStdout } = await execPromise(resultCommand);
       const parsedResult = JSON.parse(resultStdout);
       if (parsedResult.job.state === 'Completed') {
         // The result from the Nosana job is often a stringified JSON in stdout,
