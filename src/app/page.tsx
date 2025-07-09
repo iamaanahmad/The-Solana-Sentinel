@@ -1,6 +1,6 @@
 'use client';
 
-import { useActionState, useEffect } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import { analyzeToken, type FormState } from './actions';
 import { TokenForm } from '@/components/token-form';
 import { SentinelReport } from '@/components/sentinel-report';
@@ -9,6 +9,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { AlertTriangle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { ExampleTokens } from '@/components/example-tokens';
 
 const initialState: FormState = {
   report: null,
@@ -17,6 +18,7 @@ const initialState: FormState = {
 
 export default function Home() {
   const [state, formAction] = useActionState(analyzeToken, initialState);
+  const [tokenAddress, setTokenAddress] = useState('');
   const { toast } = useToast();
 
   useEffect(() => {
@@ -43,10 +45,12 @@ export default function Home() {
           <Card className="shadow-lg">
             <CardContent className="p-4 sm:p-6">
               <form action={formAction}>
-                <TokenForm />
+                <TokenForm tokenAddress={tokenAddress} setTokenAddress={setTokenAddress} />
               </form>
             </CardContent>
           </Card>
+          
+          <ExampleTokens setTokenAddress={setTokenAddress} />
 
           {state.report ? (
             <div className="mt-8 animate-in fade-in duration-500">
@@ -59,7 +63,7 @@ export default function Home() {
                   <AlertTriangle className="h-4 w-4" />
                   <AlertTitle>Welcome to The Sentinel</AlertTitle>
                   <AlertDescription>
-                    Enter a Solana token address above to begin your analysis. Our AI will assess on-chain data and social sentiment to generate a comprehensive risk report.
+                    Enter a Solana token mint address above to begin your analysis. This is the unique contract address for a token, not your personal wallet address. Try one of the examples below to see how it works.
                   </AlertDescription>
                 </Alert>
               </div>
