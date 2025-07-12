@@ -138,25 +138,42 @@ Open [http://localhost:9002](http://localhost:9002) in your browser to see the a
 
 ## 📂 Project Structure
 
+A brief overview of the key files and folders in this project.
+
 ```
 .
-├── nosana-job/         # Files for the Nosana sentiment analysis job
-│   ├── Dockerfile
-│   ├── nosana.json
-│   ├── sentiment_analysis.py
-│   └── requirements.txt
-├── public/             # Static assets
+├── nosana-job/             # Self-contained Nosana job for sentiment analysis.
+│   ├── Dockerfile          # Packages the Python script into a container.
+│   ├── nosana.json         # Job manifest for the Nosana network.
+│   ├── sentiment_analysis.py # The core sentiment analysis script.
+│   └── requirements.txt    # Python dependencies for the job.
+│
+├── public/                 # Static assets (images, fonts, etc.).
+│
 ├── src/
-│   ├── app/            # Next.js App Router pages and server actions
-│   │   ├── page.tsx
-│   │   └── actions.ts
-│   ├── ai/             # Genkit AI flows and configuration
+│   ├── app/                # The core of the Next.js application.
+│   │   ├── page.tsx        # The main UI component for the homepage.
+│   │   ├── layout.tsx      # The root layout, including fonts and metadata.
+│   │   └── actions.ts      # Server Action: handles form submission and all backend logic.
+│   │
+│   ├── ai/                 # Genkit AI configuration and flows.
+│   │   ├── genkit.ts       # Initializes the Genkit framework and Google AI plugin.
 │   │   └── flows/
-│   ├── components/     # Reusable React components (including ShadCN UI)
-│   └── types/          # TypeScript type definitions
-├── .env                # Local environment variables (private)
-├── next.config.ts      # Next.js configuration
-└── package.json        # Project dependencies
+│   │       └── summarize-risk-factors.ts # Defines the AI prompt and logic for analysis.
+│   │
+│   ├── components/         # Reusable React components.
+│   │   ├── ui/             # Base components from ShadCN UI (Button, Card, etc.).
+│   │   ├── sentinel-report.tsx # The main component to display the final report.
+│   │   └── token-form.tsx  # The input form for the token address.
+│   │
+│   └── types/              # Shared TypeScript type definitions.
+│       └── index.ts        # Defines the structure for the `SentinelReportData` object.
+│
+├── .env                    # Local environment variables (private, not committed).
+├── .gitignore              # Tells Git which files to ignore.
+├── LICENSE                 # The MIT open-source license for the project.
+├── next.config.ts          # Configuration for the Next.js framework.
+└── package.json            # Project dependencies and npm scripts.
 ```
 
 ## 📄 License
