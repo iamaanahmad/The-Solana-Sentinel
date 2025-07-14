@@ -53,7 +53,28 @@ The application follows a simple but powerful serverless architecture to deliver
 - **AI Toolkit**: Google Genkit
 - **On-Chain Data**: Helius API
 - **Decentralized Compute**: Nosana Network
-- **Hosting**: Firebase Hosting / Vercel
+
+---
+
+## 📂 Project Structure
+
+Here's a breakdown of the key files and folders in the project:
+
+-   `nosana-job/`: This directory is a self-contained unit for the decentralized part of your application.
+    -   `sentiment_analysis.py`: The Python script that runs on the Nosana Network to perform sentiment analysis.
+    -   `Dockerfile`: Defines the container for the Nosana job.
+    -   `nosana.json`: The manifest used to deploy the job to the Nosana Network.
+-   `src/app/`: The heart of the Next.js application.
+    -   `page.tsx`: The main UI page component that users interact with.
+    -   `actions.ts`: Contains the primary server-side logic (a Next.js Server Action). It handles form submission, calls the Helius and Nosana services, calculates the score, and orchestrates the final AI analysis.
+    -   `layout.tsx`: The root layout for the application.
+-   `src/ai/`: Contains all the Genkit code for AI functionality.
+    -   `genkit.ts`: Configures and initializes the Genkit AI object.
+    -   `flows/summarize-risk-factors.ts`: The main AI flow that defines the structured prompt sent to the Gemini model.
+-   `src/components/`: Contains all reusable React UI components.
+    -   `sentinel-report.tsx`: The component that beautifully displays the final analysis report.
+    -   `token-form.tsx`: The input form for the token address.
+-   `src/types/`: Contains shared TypeScript type definitions for the application.
 
 ---
 
@@ -95,12 +116,15 @@ npm install
 
 Create a new file named `.env` by making a copy of `.env.example`. Then, open the `.env` file and add your secret keys:
 
-```bash
+```env
 # Get your free API key from https://www.helius.dev/
 HELIUS_API_KEY="your-helius-api-key"
 
 # This will be generated in the Nosana Job Deployment step below
 NOSANA_JOB_ID="your-nosana-job-id"
+
+# Get your free API key from Google AI Studio
+GEMINI_API_KEY="your-gemini-api-key"
 ```
 
 ### 4. Deploy Your Nosana Sentiment Job
@@ -147,29 +171,27 @@ cd ..
 npm run dev
 ```
 
-Open `http://localhost:3000` in your browser to see the application.
+Open `http://localhost:9002` in your browser to see the application.
 
 ---
 
-## 📂 Project Structure
+## 🚀 Deploying to Vercel
 
-Here is a breakdown of the key files and folders in the project:
+This project is optimized for deployment on [Vercel](https://vercel.com/).
 
-- **`nosana-job/`**: A self-contained unit for the decentralized part of the application.
-  - `sentiment_analysis.py`: The Python script for sentiment analysis that runs on Nosana.
-  - `Dockerfile`: Packages the Python script and its dependencies into a container.
-  - `nosana.json`: The manifest file used to deploy the job to the Nosana network.
-- **`src/app/`**: The core of the Next.js application.
-  - `page.tsx`: The main UI page component that users interact with.
-  - `actions.ts`: Handles all server-side logic, including Helius API calls and Nosana job orchestration.
-  - `layout.tsx`: The main layout for the app, including HTML head, body, and fonts.
-- **`src/ai/`**: Contains all Genkit-related code for AI functionality.
-  - `genkit.ts`: Configures and initializes the Genkit AI object with the Google AI plugin.
-  - `flows/summarize-risk-factors.ts`: The main AI flow that generates the final verdict and risk assessment.
-- **`src/components/`**: All reusable React components for the UI.
-  - `ui/`: Base components from ShadCN UI (Button, Card, Input, etc.).
-  - `sentinel-report.tsx`: The component that displays the final analysis report.
-- **`src/types/`**: Contains shared TypeScript type definitions for the application data.
+### 1. Project Configuration
+
+When you import your repository into Vercel, it will automatically detect it as a **Next.js** project. The default build settings will work perfectly.
+
+### 2. Environment Variables
+
+You must add the following environment variables to your Vercel project settings:
+
+-   `HELIUS_API_KEY`: Your API key from Helius.
+-   `NOSANA_JOB_ID`: The Job ID you generated from the Nosana CLI.
+-   `GEMINI_API_KEY`: Your API key for the Google Gemini model.
+
+Once configured, Vercel will build and deploy your application.
 
 ---
 
