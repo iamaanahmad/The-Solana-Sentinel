@@ -7,9 +7,9 @@ interface ExampleTokensProps {
 }
 
 const exampleTokens = [
-  { symbol: 'JUP', address: 'JUPyiwrYFCzaZinsc2xbebxCiifD95UqLhgChfJpSA' },
-  { symbol: 'WIF', address: 'EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzL7M6bMktdBCe' },
-  { symbol: 'BONK', address: 'DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263' }
+  { symbol: 'PYUSD', address: '2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo' },
+  { symbol: 'USDC', address: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v' },
+  { symbol: 'RAY', address: '4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R' }
 ];
 
 export function ExampleTokens({ setTokenAddress }: ExampleTokensProps) {
