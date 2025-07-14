@@ -1,10 +1,8 @@
 <div align="center">
 
-# The Solana Sentinel 🛡️🔍
+# The Solana Sentinel 🛡️
 
-<a href="https://earn.superteam.fun/agent-challenge">
-<img src="https://i.ibb.co/5Mp2mkq/image.png" alt="The Solana Sentinel Banner" width="800"/>
-</a>
+<p align="center"><img src="https://i.ibb.co/5hMp2mkq/image.png" alt="The Solana Sentinel Banner" width="800"/></p>
 
 ### Your AI-Powered Shield Against Risky Tokens on the Solana Blockchain
 
@@ -149,29 +147,6 @@ npm run dev
 
 Open `http://localhost:3000` in your browser to see the application.
 
----
-
-## 📂 Project Structure
-
-Here is a breakdown of the key files and folders in the project:
-
-- **`nosana-job/`**: A self-contained unit for the decentralized part of the application.
-  - `sentiment_analysis.py`: The Python script for sentiment analysis that runs on Nosana.
-  - `Dockerfile`: Packages the Python script and its dependencies into a container.
-  - `nosana.json`: The manifest file used to deploy the job to the Nosana network.
-- **`src/app/`**: The core of the Next.js application.
-  - `page.tsx`: The main UI page component that users interact with.
-  - `actions.ts`: Handles all server-side logic, including Helius API calls and Nosana job orchestration.
-  - `layout.tsx`: The main layout for the app, including HTML head, body, and fonts.
-- **`src/ai/`**: Contains all Genkit-related code for AI functionality.
-  - `genkit.ts`: Configures and initializes the Genkit AI object with the Google AI plugin.
-  - `flows/summarize-risk-factors.ts`: The main AI flow that generates the final verdict and risk assessment.
-- **`src/components/`**: All reusable React components for the UI.
-  - `ui/`: Base components from ShadCN UI (Button, Card, Input, etc.).
-  - `sentinel-report.tsx`: The component that displays the final analysis report.
-- **`src/types/`**: Contains shared TypeScript type definitions for the application data.
-
----
 
 ## 📄 License
 
