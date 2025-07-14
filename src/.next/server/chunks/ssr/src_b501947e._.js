@@ -316,6 +316,20 @@ function ScoreDisplay({ score }) {
         className: "relative h-40 w-40",
         "aria-label": `Sentinel Score: ${score} out of 100`,
         children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
+                children: `
+        .text-risk-high { color: hsl(0 50% 55%); }
+        .text-risk-medium { color: hsl(30 65% 52%); }
+        .text-risk-low { color: hsl(120 34% 43%); }
+        .bg-risk-high\\/10 { background-color: hsla(0, 50%, 55%, 0.1); }
+        .bg-risk-medium\\/10 { background-color: hsla(30, 65%, 52%, 0.1); }
+        .bg-risk-low\\/10 { background-color: hsla(120, 34%, 43%, 0.1); }
+      `
+            }, void 0, false, {
+                fileName: "[project]/src/components/score-display.tsx",
+                lineNumber: 51,
+                columnNumber: 7
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                 className: "h-full w-full",
                 viewBox: "0 0 120 120",
@@ -330,7 +344,7 @@ function ScoreDisplay({ score }) {
                         cy: "60"
                     }, void 0, false, {
                         fileName: "[project]/src/components/score-display.tsx",
-                        lineNumber: 52,
+                        lineNumber: 60,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -350,13 +364,13 @@ function ScoreDisplay({ score }) {
                         }
                     }, void 0, false, {
                         fileName: "[project]/src/components/score-display.tsx",
-                        lineNumber: 61,
+                        lineNumber: 69,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/score-display.tsx",
-                lineNumber: 51,
+                lineNumber: 59,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -367,7 +381,7 @@ function ScoreDisplay({ score }) {
                         children: displayScore
                     }, void 0, false, {
                         fileName: "[project]/src/components/score-display.tsx",
-                        lineNumber: 82,
+                        lineNumber: 90,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -375,13 +389,13 @@ function ScoreDisplay({ score }) {
                         children: "Score"
                     }, void 0, false, {
                         fileName: "[project]/src/components/score-display.tsx",
-                        lineNumber: 85,
+                        lineNumber: 93,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/score-display.tsx",
-                lineNumber: 76,
+                lineNumber: 84,
                 columnNumber: 7
             }, this)
         ]
@@ -500,6 +514,16 @@ function SentinelReport({ report }) {
             Medium: 'text-risk-medium',
             High: 'text-risk-high'
         })[risk];
+    const getRiskSpecificClasses = (risk)=>{
+        switch(risk){
+            case 'Low':
+                return 'bg-risk-low/10 border-risk-low text-risk-low';
+            case 'Medium':
+                return 'bg-risk-medium/10 border-risk-medium text-risk-medium';
+            case 'High':
+                return 'bg-risk-high/10 border-risk-high text-risk-high';
+        }
+    };
     const MetricRow = ({ label, children })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "flex justify-between items-center py-2.5",
             children: [
@@ -508,7 +532,7 @@ function SentinelReport({ report }) {
                     children: label
                 }, void 0, false, {
                     fileName: "[project]/src/components/sentinel-report.tsx",
-                    lineNumber: 24,
+                    lineNumber: 35,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -516,18 +540,35 @@ function SentinelReport({ report }) {
                     children: children
                 }, void 0, false, {
                     fileName: "[project]/src/components/sentinel-report.tsx",
-                    lineNumber: 25,
+                    lineNumber: 36,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/sentinel-report.tsx",
-            lineNumber: 23,
+            lineNumber: 34,
             columnNumber: 5
         }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
         className: "shadow-lg animate-in fade-in duration-500",
         children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
+                children: `
+        .text-risk-high { color: hsl(0 50% 55%); }
+        .text-risk-medium { color: hsl(30 65% 52%); }
+        .text-risk-low { color: hsl(120 34% 43%); }
+        .bg-risk-high\\/10 { background-color: hsla(0, 50%, 55%, 0.1); }
+        .bg-risk-medium\\/10 { background-color: hsla(30, 65%, 52%, 0.1); }
+        .bg-risk-low\\/10 { background-color: hsla(120, 34%, 43%, 0.1); }
+        .border-risk-high { border-color: hsl(0 50% 55%); }
+        .border-risk-medium { border-color: hsl(30 65% 52%); }
+        .border-risk-low { border-color: hsl(120 34% 43%); }
+      `
+            }, void 0, false, {
+                fileName: "[project]/src/components/sentinel-report.tsx",
+                lineNumber: 42,
+                columnNumber: 8
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardHeader"], {
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex flex-col md:flex-row md:items-start md:justify-between gap-4",
@@ -545,7 +586,7 @@ function SentinelReport({ report }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                    lineNumber: 34,
+                                    lineNumber: 56,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardDescription"], {
@@ -553,17 +594,17 @@ function SentinelReport({ report }) {
                                     children: tokenAddress
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                    lineNumber: 35,
+                                    lineNumber: 57,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/sentinel-report.tsx",
-                            lineNumber: 33,
+                            lineNumber: 55,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
-                            className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])('text-base font-bold uppercase tracking-wider border-2 px-4 py-1.5', riskLevel === 'Low' && 'bg-risk-low/10 border-risk-low text-risk-low', riskLevel === 'Medium' && 'bg-risk-medium/10 border-risk-medium text-risk-medium', riskLevel === 'High' && 'bg-risk-high/10 border-risk-high text-risk-high'),
+                            className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])('text-base font-bold uppercase tracking-wider border-2 px-4 py-1.5', getRiskSpecificClasses(riskLevel)),
                             variant: "outline",
                             children: [
                                 riskLevel,
@@ -571,18 +612,18 @@ function SentinelReport({ report }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/sentinel-report.tsx",
-                            lineNumber: 37,
+                            lineNumber: 59,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/sentinel-report.tsx",
-                    lineNumber: 32,
+                    lineNumber: 54,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/sentinel-report.tsx",
-                lineNumber: 31,
+                lineNumber: 53,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -597,12 +638,12 @@ function SentinelReport({ report }) {
                                     score: sentinelScore
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                    lineNumber: 54,
+                                    lineNumber: 74,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/sentinel-report.tsx",
-                                lineNumber: 53,
+                                lineNumber: 73,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -613,14 +654,14 @@ function SentinelReport({ report }) {
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bot$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Bot$3e$__["Bot"], {}, void 0, false, {
                                                 fileName: "[project]/src/components/sentinel-report.tsx",
-                                                lineNumber: 58,
+                                                lineNumber: 78,
                                                 columnNumber: 15
                                             }, this),
                                             "Final Verdict"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 57,
+                                        lineNumber: 77,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -628,19 +669,19 @@ function SentinelReport({ report }) {
                                         children: aiAnalysis.finalVerdict
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 61,
+                                        lineNumber: 81,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/sentinel-report.tsx",
-                                lineNumber: 56,
+                                lineNumber: 76,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/sentinel-report.tsx",
-                        lineNumber: 52,
+                        lineNumber: 72,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -654,19 +695,19 @@ function SentinelReport({ report }) {
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chart$2d$column$2d$increasing$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BarChart4$3e$__["BarChart4"], {}, void 0, false, {
                                                 fileName: "[project]/src/components/sentinel-report.tsx",
-                                                lineNumber: 69,
+                                                lineNumber: 89,
                                                 columnNumber: 97
                                             }, this),
                                             "On-Chain Forensics"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 69,
+                                        lineNumber: 89,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$separator$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Separator"], {}, void 0, false, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 70,
+                                        lineNumber: 90,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MetricRow, {
@@ -678,7 +719,7 @@ function SentinelReport({ report }) {
                                                     className: "h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                                    lineNumber: 73,
+                                                    lineNumber: 93,
                                                     columnNumber: 78
                                                 }, this),
                                                 " ",
@@ -686,13 +727,13 @@ function SentinelReport({ report }) {
                                                     children: "Renounced"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                                    lineNumber: 73,
+                                                    lineNumber: 93,
                                                     columnNumber: 113
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/sentinel-report.tsx",
-                                            lineNumber: 73,
+                                            lineNumber: 93,
                                             columnNumber: 23
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "flex items-center gap-2 text-risk-high",
@@ -701,7 +742,7 @@ function SentinelReport({ report }) {
                                                     className: "h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                                    lineNumber: 75,
+                                                    lineNumber: 95,
                                                     columnNumber: 79
                                                 }, this),
                                                 " ",
@@ -709,23 +750,23 @@ function SentinelReport({ report }) {
                                                     children: "Active"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                                    lineNumber: 75,
+                                                    lineNumber: 95,
                                                     columnNumber: 114
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/sentinel-report.tsx",
-                                            lineNumber: 75,
+                                            lineNumber: 95,
                                             columnNumber: 23
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 71,
+                                        lineNumber: 91,
                                         columnNumber: 18
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$separator$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Separator"], {}, void 0, false, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 78,
+                                        lineNumber: 98,
                                         columnNumber: 18
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MetricRow, {
@@ -737,7 +778,7 @@ function SentinelReport({ report }) {
                                                     className: "h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                                    lineNumber: 81,
+                                                    lineNumber: 101,
                                                     columnNumber: 79
                                                 }, this),
                                                 " ",
@@ -745,13 +786,13 @@ function SentinelReport({ report }) {
                                                     children: "Renounced"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                                    lineNumber: 81,
+                                                    lineNumber: 101,
                                                     columnNumber: 114
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/sentinel-report.tsx",
-                                            lineNumber: 81,
+                                            lineNumber: 101,
                                             columnNumber: 24
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "flex items-center gap-2 text-risk-high",
@@ -760,7 +801,7 @@ function SentinelReport({ report }) {
                                                     className: "h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                                    lineNumber: 83,
+                                                    lineNumber: 103,
                                                     columnNumber: 80
                                                 }, this),
                                                 " ",
@@ -768,23 +809,23 @@ function SentinelReport({ report }) {
                                                     children: "Active"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                                    lineNumber: 83,
+                                                    lineNumber: 103,
                                                     columnNumber: 115
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/sentinel-report.tsx",
-                                            lineNumber: 83,
+                                            lineNumber: 103,
                                             columnNumber: 24
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 79,
+                                        lineNumber: 99,
                                         columnNumber: 18
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$separator$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Separator"], {}, void 0, false, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 86,
+                                        lineNumber: 106,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MetricRow, {
@@ -796,7 +837,7 @@ function SentinelReport({ report }) {
                                                     children: `${onChainAnalysis.top10HolderConcentrationPercent.toFixed(1)}%`
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                                    lineNumber: 89,
+                                                    lineNumber: 109,
                                                     columnNumber: 27
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -805,23 +846,23 @@ function SentinelReport({ report }) {
                                                     children: aiAnalysis.onChainRisk.holderConcentrationRisk
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                                    lineNumber: 90,
+                                                    lineNumber: 110,
                                                     columnNumber: 27
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/sentinel-report.tsx",
-                                            lineNumber: 88,
+                                            lineNumber: 108,
                                             columnNumber: 23
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 87,
+                                        lineNumber: 107,
                                         columnNumber: 20
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$separator$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Separator"], {}, void 0, false, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 93,
+                                        lineNumber: 113,
                                         columnNumber: 20
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MetricRow, {
@@ -833,7 +874,7 @@ function SentinelReport({ report }) {
                                                     children: `${onChainAnalysis.deployerLpConcentrationPercent.toFixed(1)}%`
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                                    lineNumber: 96,
+                                                    lineNumber: 116,
                                                     columnNumber: 27
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -842,24 +883,24 @@ function SentinelReport({ report }) {
                                                     children: aiAnalysis.onChainRisk.deployerLpHoldingsRisk
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/sentinel-report.tsx",
-                                                    lineNumber: 97,
+                                                    lineNumber: 117,
                                                     columnNumber: 27
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/sentinel-report.tsx",
-                                            lineNumber: 95,
+                                            lineNumber: 115,
                                             columnNumber: 24
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 94,
+                                        lineNumber: 114,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/sentinel-report.tsx",
-                                lineNumber: 68,
+                                lineNumber: 88,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -870,19 +911,19 @@ function SentinelReport({ report }) {
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$smile$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Smile$3e$__["Smile"], {}, void 0, false, {
                                                 fileName: "[project]/src/components/sentinel-report.tsx",
-                                                lineNumber: 102,
+                                                lineNumber: 122,
                                                 columnNumber: 97
                                             }, this),
                                             "AI Sentiment Analysis"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 102,
+                                        lineNumber: 122,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$separator$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Separator"], {}, void 0, false, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 103,
+                                        lineNumber: 123,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MetricRow, {
@@ -891,17 +932,17 @@ function SentinelReport({ report }) {
                                             children: sentimentAnalysis.humanReadableSummary
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/sentinel-report.tsx",
-                                            lineNumber: 105,
+                                            lineNumber: 125,
                                             columnNumber: 20
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 104,
+                                        lineNumber: 124,
                                         columnNumber: 18
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$separator$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Separator"], {}, void 0, false, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 127,
                                         columnNumber: 18
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MetricRow, {
@@ -910,36 +951,36 @@ function SentinelReport({ report }) {
                                             children: sentimentAnalysis.compoundScore.toFixed(2)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/sentinel-report.tsx",
-                                            lineNumber: 109,
+                                            lineNumber: 129,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/sentinel-report.tsx",
-                                        lineNumber: 108,
+                                        lineNumber: 128,
                                         columnNumber: 18
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/sentinel-report.tsx",
-                                lineNumber: 101,
+                                lineNumber: 121,
                                 columnNumber: 14
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/sentinel-report.tsx",
-                        lineNumber: 67,
+                        lineNumber: 87,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/sentinel-report.tsx",
-                lineNumber: 50,
+                lineNumber: 70,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/sentinel-report.tsx",
-        lineNumber: 30,
+        lineNumber: 41,
         columnNumber: 5
     }, this);
 }

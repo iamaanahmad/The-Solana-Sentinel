@@ -18,6 +18,17 @@ export function SentinelReport({ report }: { report: SentinelReportData }) {
     Medium: 'text-risk-medium',
     High: 'text-risk-high',
   }[risk]);
+  
+  const getRiskSpecificClasses = (risk: 'Low' | 'Medium' | 'High') => {
+    switch (risk) {
+        case 'Low':
+            return 'bg-risk-low/10 border-risk-low text-risk-low';
+        case 'Medium':
+            return 'bg-risk-medium/10 border-risk-medium text-risk-medium';
+        case 'High':
+            return 'bg-risk-high/10 border-risk-high text-risk-high';
+    }
+  }
 
   const MetricRow = ({ label, children }: { label: string; children: React.ReactNode }) => (
     <div className="flex justify-between items-center py-2.5">
@@ -28,6 +39,17 @@ export function SentinelReport({ report }: { report: SentinelReportData }) {
 
   return (
     <Card className="shadow-lg animate-in fade-in duration-500">
+       <style>{`
+        .text-risk-high { color: hsl(0 50% 55%); }
+        .text-risk-medium { color: hsl(30 65% 52%); }
+        .text-risk-low { color: hsl(120 34% 43%); }
+        .bg-risk-high\\/10 { background-color: hsla(0, 50%, 55%, 0.1); }
+        .bg-risk-medium\\/10 { background-color: hsla(30, 65%, 52%, 0.1); }
+        .bg-risk-low\\/10 { background-color: hsla(120, 34%, 43%, 0.1); }
+        .border-risk-high { border-color: hsl(0 50% 55%); }
+        .border-risk-medium { border-color: hsl(30 65% 52%); }
+        .border-risk-low { border-color: hsl(120 34% 43%); }
+      `}</style>
       <CardHeader>
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div>
@@ -37,9 +59,7 @@ export function SentinelReport({ report }: { report: SentinelReportData }) {
           <Badge 
             className={cn(
               'text-base font-bold uppercase tracking-wider border-2 px-4 py-1.5', 
-              riskLevel === 'Low' && 'bg-risk-low/10 border-risk-low text-risk-low',
-              riskLevel === 'Medium' && 'bg-risk-medium/10 border-risk-medium text-risk-medium',
-              riskLevel === 'High' && 'bg-risk-high/10 border-risk-high text-risk-high'
+              getRiskSpecificClasses(riskLevel)
             )}
             variant="outline"
           >

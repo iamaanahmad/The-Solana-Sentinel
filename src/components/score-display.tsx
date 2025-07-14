@@ -48,6 +48,14 @@ export function ScoreDisplay({ score }: { score: number }) {
 
   return (
     <div className="relative h-40 w-40" aria-label={`Sentinel Score: ${score} out of 100`}>
+      <style>{`
+        .text-risk-high { color: hsl(0 50% 55%); }
+        .text-risk-medium { color: hsl(30 65% 52%); }
+        .text-risk-low { color: hsl(120 34% 43%); }
+        .bg-risk-high\\/10 { background-color: hsla(0, 50%, 55%, 0.1); }
+        .bg-risk-medium\\/10 { background-color: hsla(30, 65%, 52%, 0.1); }
+        .bg-risk-low\\/10 { background-color: hsla(120, 34%, 43%, 0.1); }
+      `}</style>
       <svg className="h-full w-full" viewBox="0 0 120 120">
         <circle
           className="text-border/50"
