@@ -1,4 +1,4 @@
 import { config } from 'dotenv';
 config();
 
-import '@/ai/flows/summarize-risk-factors.ts';
+import './flows/summarize-risk-factors.ts';

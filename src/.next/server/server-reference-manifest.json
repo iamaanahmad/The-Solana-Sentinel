@@ -1,0 +1,17 @@
+{
+  "node": {
+    "60137d540ef10aeac452eb72aacbaec8759646d632": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/../node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fhome%2Fuser%2Fstudio%2Fsrc%2Fapp%2Factions.ts%22%2C%5B%7B%22id%22%3A%2260137d540ef10aeac452eb72aacbaec8759646d632%22%2C%22exportedName%22%3A%22analyzeToken%22%7D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "bh76dQkxi/m/FDlMa3e+7ibR05rTOtbWE9sp815fNsM="
+}
