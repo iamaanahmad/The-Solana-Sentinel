@@ -27,8 +27,9 @@ The Solana Sentinel is a cutting-edge web application that provides real-time, A
 📹 [Watch on YouTube](https://www.youtube.com/watch?v=4GORq9QqTrA)  
 🟣 [Also on CodeCup](https://codecup.cc/videos/F6H1bKVVMb7te6MS95vT) – a Web3 video platform where dev work becomes an on-chain asset.
 
-💡 CodeCup is one of our projects:  
-Upload technical demos, earn NFTs for your builds, and grow your Web3 dev identity on Solana.
+<p>💡 CodeCup is one of our projects:</p> 
+<p>Upload technical demos, earn NFTs for your builds, and grow your Web3 dev identity on Solana.</p>
+
 ---
 
 ## ✨ Core Features
