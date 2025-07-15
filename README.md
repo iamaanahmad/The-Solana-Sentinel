@@ -6,7 +6,7 @@
 
 ### Your AI-Powered Shield Against Risky Tokens on the Solana Blockchain
 
-[![Nosana Agent Challenge](https://img.shields.io/badge/Nosana_Builders'_Challenge-Agents_101-blue?style=for-the-badge)](https://earn.superteam.fun/agent-challenge)
+[![Nosana Agent Challenge](https://img.shields.io/badge/Nosana_Builders'_Challenge-Agents_101-blue?style=for-the-badge)](https://earn.superteam.fun/listing/agent-challenge)
 
 </div>
 
@@ -20,6 +20,15 @@
 
 The Solana Sentinel is a cutting-edge web application that provides real-time, AI-driven risk analysis for Solana tokens. By synthesizing live on-chain data with decentralized AI sentiment analysis, it generates a comprehensive "Sentinel Score" to help users identify potentially malicious projects before they invest.
 
+## 🔗 Live Demo  
+🌐 [https://the-solana-sentinel.vercel.app/](https://the-solana-sentinel.vercel.app/)
+
+## 🎥 Demo Video  
+📹 [Watch on YouTube](https://www.youtube.com/watch?v=4GORq9QqTrA)  
+🟣 [Also on CodeCup](https://codecup.cc/videos/F6H1bKVVMb7te6MS95vT) – a Web3 video platform where dev work becomes an on-chain asset.
+
+💡 CodeCup is one of our projects:  
+Upload technical demos, earn NFTs for your builds, and grow your Web3 dev identity on Solana.
 ---
 
 ## ✨ Core Features
