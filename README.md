@@ -2,11 +2,11 @@
 
 # The Solana Sentinel 🛡️
 
+### Your AI-Powered Shield for Secure Solana Trading
+
+**Instantly analyze any Solana token for security risks. The Solana Sentinel combines live on-chain data with AI-powered sentiment analysis to deliver a comprehensive, easy-to-understand risk report.**
+
 <p align="center"><img src="https://i.ibb.co/5hMp2mkq/image.png" alt="The Solana Sentinel Banner" width="800"/></p>
-
-### Your AI-Powered Shield Against Risky Tokens on the Solana Blockchain
-
-[![Nosana Agent Challenge](https://img.shields.io/badge/Nosana_Builders'_Challenge-Agents_101-blue?style=for-the-badge)](https://earn.superteam.fun/listing/agent-challenge)
 
 </div>
 
@@ -14,40 +14,35 @@
   <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js"/>
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"/>
   <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS"/>
-  <img src="https://img.shields.io/badge/Google_Genkit-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Genkit"/>
+  <img src="https://img.shields.io/badge/Google_Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Gemini"/>
   <img src="https://img.shields.io/badge/Nosana-1A1A1A?style=for-the-badge" alt="Nosana"/>
 </p>
 
 The Solana Sentinel is a cutting-edge web application that provides real-time, AI-driven risk analysis for Solana tokens. By synthesizing live on-chain data with decentralized AI sentiment analysis, it generates a comprehensive "Sentinel Score" to help users identify potentially malicious projects before they invest.
 
-## 🔗 Live Demo  
-🌐 [https://the-solana-sentinel.vercel.app/](https://the-solana-sentinel.vercel.app/)
+## 🔗 Live Demo & Video
 
-## 🎥 Demo Video  
-📹 [Watch on YouTube](https://www.youtube.com/watch?v=4GORq9QqTrA)  
-🟣 [Also on CodeCup](https://codecup.cc/videos/F6H1bKVVMb7te6MS95vT) – a Web3 video platform where dev work becomes an on-chain asset.
-
-<p>💡 CodeCup is one of our projects:</p> 
-<p>Upload technical demos, earn NFTs for your builds, and grow your Web3 dev identity on Solana.</p>
+- **Try it live**: [the-solana-sentinel.vercel.app](https://the-solana-sentinel.vercel.app/)
+- **Watch the demo**: [YouTube](https://www.youtube.com/watch?v=4GORq9QqTrA)
 
 ---
 
 ## ✨ Core Features
 
-- **🤖 AI-Powered Final Verdict**: Leverages Google's Gemini model via Genkit to provide a nuanced, human-readable summary of a token's overall risk profile.
-- **🔗 Live On-Chain Forensics**: Fetches and analyzes critical on-chain metrics in real-time from the Helius API, including:
-  - ✅ Mint & Freeze Authority: Checks if developers have renounced control.
-  - 📊 Holder Concentration: Calculates the supply percentage held by top wallets.
-  - 💧 Liquidity Distribution: Assesses the deployer's share of the liquidity pool.
-- **☁️ Decentralized Sentiment Analysis**: Offloads social media sentiment analysis to the Nosana Network, a decentralized GPU grid, ensuring unbiased and scalable compute.
-- **💯 Holistic Sentinel Score**: A proprietary algorithm synthesizes on-chain and off-chain data into a single, easy-to-understand risk score (0-100).
+- **🤖 Gemini-Powered Verdict**: Leverages Google's Gemini model via Genkit to provide a nuanced, human-readable summary of a token's overall risk profile.
+- **🔗 Real-Time On-Chain Forensics**: Fetches and analyzes critical on-chain metrics from the Helius API, including:
+  - ✅ **Contract Authorities**: Checks if developers have renounced control over minting and freezing tokens.
+  - 📊 **Holder Concentration**: Calculates the supply percentage held by top wallets to detect whale dominance.
+  - 💧 **Liquidity Analysis**: Assesses the deployer's share of the liquidity pool to identify potential rug-pull risks.
+- **☁️ Decentralized AI Sentiment**: Offloads social media sentiment analysis to the Nosana Network, a decentralized GPU grid, for unbiased and scalable compute.
+- **💯 Holistic Sentinel Score**: Our proprietary algorithm synthesizes on-chain and off-chain data into a single, intuitive risk score (0-100).
 - **📈 Dynamic & Interactive Reports**: Presents the full analysis in a clean, responsive, and beautifully designed interface built with Next.js and ShadCN UI.
 
 ---
 
 ## ⚙️ How It Works
 
-The application follows a simple but powerful serverless architecture to deliver real-time analysis.
+The application follows a simple but powerful serverless architecture to deliver real-time analysis on demand.
 
 **User Input** `(Token Address)` ───> **Server Action** `(Next.js)` ───> **Data Fetching** `([Helius API] & [Nosana Network])` ───> **AI Analysis** `(Google Genkit)` ───> **Final Report** `(UI)`
 
@@ -58,20 +53,10 @@ The application follows a simple but powerful serverless architecture to deliver
 - **Framework**: Next.js (App Router, Server Actions)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS & ShadCN UI
-- **AI Toolkit**: Google Genkit
+- **AI Toolkit**: Google Genkit (with Gemini)
 - **On-Chain Data**: Helius API
 - **Decentralized Compute**: Nosana Network
-- **Hosting**: Firebase Hosting / Vercel
-
----
-
-## ⚠️ A Note on the Mastra Framework Requirement
-
-Given the intense time constraints of this hackathon, we made a strategic decision to focus on delivering a complete, polished, and fully functional end-to-end user experience. Our primary goal was to demonstrate a powerful and innovative use case for the Nosana Network's core compute capabilities.
-
-Our application successfully offloads its AI sentiment analysis workload to a custom Docker container running on Nosana Jobs. While we fully architected the project with the Mastra framework in mind, we ran out of time to complete the final refactoring into the official agent-challenge boilerplate without sacrificing the stability of the final product.
-
-We believe this working prototype, which showcases a real-world integration with Nosana Jobs, is a stronger testament to the platform's power than an incomplete project.
+- **Hosting**: Vercel / Firebase Hosting
 
 ---
 
@@ -82,7 +67,7 @@ Follow these instructions to get a local copy up and running for development and
 ### Prerequisites
 
 - Node.js (v18 or later)
-- npm
+- npm or yarn
 - Docker Desktop (must be running)
 - Nosana CLI installed globally (`npm install -g @nosana/cli`)
 
@@ -101,7 +86,7 @@ npm install
 
 ### 3. Set Up Environment Variables
 
-Create a new file named `.env` by making a copy of `.env.example`. Then, open the `.env` file and add your secret keys:
+Create a new file named `.env` by copying `.env.example`. Then, fill in the required secret keys:
 
 ```bash
 # Get your free API key from https://www.helius.dev/
@@ -111,7 +96,7 @@ HELIUS_API_KEY="your-helius-api-key"
 NOSANA_JOB_ID="your-nosana-job-id"
 ```
 
-### 4. Deploy Your Nosana Sentiment Job
+### 4. Deploy the Nosana Sentiment Job
 
 The sentiment analysis script is located in the `nosana-job` directory. You need to deploy it to the Nosana Network to get your `NOSANA_JOB_ID`.
 
