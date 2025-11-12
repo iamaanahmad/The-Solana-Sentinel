@@ -43,3 +43,30 @@ next-env.d.ts
 # firebase
 firebase-debug.log
 firestore-debug.log
+
+# Rust/Anchor build artifacts
+target/
+Cargo.lock
+*.rlib
+*.rmeta
+*.so
+*.dylib
+
+# SBF/Solana program builds
+programs/*/target/
+programs/**/target/sbf-solana-solana/
+
+# Solana wallet files
+**/keypair.json
+**/id.json
+.solana-config
+
+# Build artifacts
+dist/
+build/
+*.wasm
+*.o
+
+# IDL Cache
+.idlCache/
+*.idl

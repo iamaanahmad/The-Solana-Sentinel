@@ -1,0 +1,21 @@
+[toolchain]
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.devnet]
+sentinel = "9bVhqoVh2wGa31AssuodP3QH7jJ8QYX27BerAham6Gsu"
+
+[programs.mainnet]
+sentinel = "9bVhqoVh2wGa31AssuodP3QH7jJ8QYX27BerAham6Gsu"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha --require ts-node/register tests/**/*.test.ts"
