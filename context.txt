@@ -1,0 +1,17 @@
+Current Strengths (from your repo)
+AI-Powered Risk Analysis: Uses Google Genkit + Gemini for token risk summaries.
+
+On-Chain Forensics: Pulls data from Helius (authority, liquidity, holder concentration).
+
+Decentralized Sentiment: Integrates Nosana for GPU-powered social sentiment.
+
+Clean UI: Built with Next.js + ShadCN UI, already deployed on Vercel.
+
+Modular Architecture: Serverless, composable, and easy to extend.
+
+🏆 Target Tracks & How to Win
+Track	Strategy	What to Build
+Best Trustless Agent ($10K)	Make Sentinel autonomous and composable	- Add x402 support to allow Sentinel to pay for data or alerts (e.g., Switchboard feeds)<br>- Add signed attestations or on-chain risk reports (e.g., via Solana transactions or IPFS + signature)<br>- Enable agent-to-agent messaging (e.g., notify other agents of high-risk tokens)
+Best x402 API Integration ($10K)	Use x402 for payments and access control	- Wrap Sentinel’s API with x402<br>- Require payment for premium analysis or real-time alerts<br>- Add a “pay-to-analyze” endpoint for other agents
+Best x402 Agent Application ($20K)	Position Sentinel as a plug-and-play security agent	- Build a Telegram bot or CLI agent that uses Sentinel’s API<br>- Let users or agents subscribe to alerts for specific tokens<br>- Add AgentPay integration for seamless payments
+Switchboard Bounty ($5K)	Use real-time oracle feeds	- Integrate Switchboard to monitor token price volatility or liquidity changes<br>- Trigger re-analysis or alerts based on feed thresholds

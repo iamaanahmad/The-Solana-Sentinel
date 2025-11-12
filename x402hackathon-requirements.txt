@@ -1,0 +1,44 @@
+Here’s a clear checklist of all the Solana X402 Hackathon requirements you must meet to ensure your project — The Solana Sentinel — qualifies and stands out for top prizes:
+
+✅ Core Submission Requirements
+Requirement	What You Must Do
+Open Source Code	Host your full project on GitHub with a public repo. Include a clear README and license.
+x402 Protocol Integration	Your project must use the x402 protocol or related agent infrastructure. For Sentinel, this means integrating x402 for payments, access control, or agent communication.
+Solana Deployment	Deploy your program to either Solana devnet or mainnet. Include deployment instructions in your documentation.
+Demo Video (≤ 3 minutes)	Record a concise demo showing your project in action. Highlight x402 usage, agent behavior, and Solana integration.
+Documentation	Provide clear instructions on how to run, use, and extend your project. Include architecture overview, setup steps, and x402 flow explanation.
+🏆 Track-Specific Enhancements
+🥇 Best Trustless Agent
+Add identity, reputation, or validation mechanisms.
+
+Use signed attestations or on-chain risk reports.
+
+Enable agent-to-agent messaging or alerting.
+
+🥈 Best x402 API Integration
+Wrap Sentinel’s API with x402 headers.
+
+Require payment for premium analysis or alerts.
+
+Log receipts and usage for transparency.
+
+🥉 Best x402 Agent Application
+Make Sentinel a composable agent (e.g., CLI, Telegram bot).
+
+Use x402 for autonomous payments and task execution.
+
+Showcase real-world utility and agent autonomy.
+
+🎯 Switchboard Bounty
+Integrate Switchboard oracle feeds.
+
+Trigger re-analysis or alerts based on real-time data.
+
+📦 Optional Enhancements (for bonus points)
+Use Phantom CASH or Visa TAP for payments.
+
+Add support for ATXP, ACP, or AP2 protocols.
+
+Include a dashboard or NFT-based scoring system.
+
+Build a facilitator or use the x402 template for faster setup.

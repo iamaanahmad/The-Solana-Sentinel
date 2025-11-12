@@ -60,7 +60,7 @@ Copy the **Job Address** from the previous step. Open the `.env` file in the roo
 
 ```env
 HELIUS_API_KEY="..."
-NOSANA_JOB_ID="job-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # <-- PASTE YOUR ID HERE
+NOSANA_JOB_ID="job-H6rAfV5FCBwHqtg3NASJGkDTLcBYrW6pEeGQNzayhrqL" # <-- PASTE YOUR ID HERE
 ```
 
 ---
