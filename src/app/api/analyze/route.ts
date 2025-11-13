@@ -5,6 +5,7 @@ import { z } from 'zod';
 
 import { AnalysisService } from '@/services/analysis.service';
 import { AttestationService } from '@/services/attestation.service';
+import { SolanaService } from '@/services/solana.service';
 import { recordPayment } from '@/services/payment.service';
 import { buildX402ReceiptHeaders, validateX402Request } from '@/middleware/x402.middleware';
 import { assertTier } from '@/config/tier-pricing';
@@ -12,6 +13,7 @@ import { X402Error } from '@/types/x402';
 
 const analysisService = new AnalysisService();
 const attestationService = new AttestationService();
+const solanaService = new SolanaService();
 
 const TokenSchema = z.string().min(32).max(44);
 
@@ -112,8 +114,18 @@ export async function POST(request: NextRequest) {
 
     // Sign attestation for Standard and Premium tiers
     let attestation;
+    let onChainAttestation;
     if (tier !== 'basic') {
       attestation = attestationService.signReport(report, analysisId);
+      
+      // Store attestation on-chain for Premium tier
+      if (tier === 'premium') {
+        console.log('🔗 [/api/analyze] Storing attestation on-chain...');
+        onChainAttestation = await solanaService.storeAttestationOnChain(report, analysisId);
+        if (onChainAttestation) {
+          console.log('✅ [/api/analyze] On-chain attestation stored:', onChainAttestation.attestationPda);
+        }
+      }
     }
 
     return NextResponse.json(
@@ -122,6 +134,15 @@ export async function POST(request: NextRequest) {
         report: {
           ...report,
           ...(attestation && { attestation }),
+          ...(onChainAttestation && { 
+            onChainAttestation: {
+              signature: onChainAttestation.signature,
+              attestationPda: onChainAttestation.attestationPda,
+              slot: onChainAttestation.slot,
+              blockTime: onChainAttestation.blockTime,
+              explorerUrl: `https://explorer.solana.com/tx/${onChainAttestation.signature}?cluster=${process.env.NEXT_PUBLIC_NETWORK || 'devnet'}`,
+            }
+          }),
         },
         receipt: {
           ...receiptPayload,

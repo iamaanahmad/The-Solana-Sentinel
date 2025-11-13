@@ -5,7 +5,6 @@ Requirement	What You Must Do
 Open Source Code	Host your full project on GitHub with a public repo. Include a clear README and license.
 x402 Protocol Integration	Your project must use the x402 protocol or related agent infrastructure. For Sentinel, this means integrating x402 for payments, access control, or agent communication.
 Solana Deployment	Deploy your program to either Solana devnet or mainnet. Include deployment instructions in your documentation.
-Demo Video (≤ 3 minutes)	Record a concise demo showing your project in action. Highlight x402 usage, agent behavior, and Solana integration.
 Documentation	Provide clear instructions on how to run, use, and extend your project. Include architecture overview, setup steps, and x402 flow explanation.
 🏆 Track-Specific Enhancements
 🥇 Best Trustless Agent

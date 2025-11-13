@@ -10,9 +10,9 @@
 
 ---
 
-## ✨ Core Features
+## ✨ Key Features
 
-### 🔒 x402 Protocol Integration (Hackathon Special!)
+### 🔒 x402 Protocol Integration
 -   **💳 Payment-Based Access Control**: Tier-based API access (basic, standard, premium) with cryptographic payment verification
 -   **✍️ Ed25519 Signature Verification**: Every request validated with Solana wallet signatures
 -   **🔐 Nonce-Based Replay Protection**: Redis-backed nonce tracking prevents replay attacks
@@ -23,33 +23,23 @@
 
 **Learn more**: [x402 Integration Guide](./docs/X402_INTEGRATION.md) | [Payment Flow Walkthrough](./docs/X402_PAYMENT_FLOW.md)
 
-### Phase 3: Foundation
--   **🤖 AI-Powered Risk Analysis**: Leverages Google's Gemini model via Genkit to provide a nuanced, human-readable "Final Verdict" on a token's risk profile.
--   **🔗 On-Chain Forensics Engine**: Fetches and analyzes critical on-chain metrics in real-time from the Helius API, including:
-    -   **Mint & Freeze Authority**: Checks if authorities have been renounced.
-    -   **Holder Concentration**: Calculates the supply percentage held by top wallets.
-    -   **Liquidity Distribution**: Assesses the deployer's share of the liquidity pool.
--   **☁️ Decentralized Sentiment Analysis**: Offloads social media sentiment analysis to the **Nosana Network**, a decentralized GPU grid, ensuring unbiased and scalable compute.
--   **💯 Holistic Sentinel Score**: A proprietary algorithm synthesizes on-chain and off-chain data into a single, easy-to-understand risk score (0-100).
--   **📊 Dynamic & Interactive Reports**: Presents the full analysis in a clean, responsive, and beautifully designed interface built with Next.js and ShadCN UI.
+### 🤖 AI-Powered Analysis
+-   **Risk Scoring**: Leverages Google's Gemini model via Genkit to provide comprehensive risk analysis with a proprietary 0-100 scoring system
+-   **On-Chain Forensics**: Real-time analysis of mint/freeze authority, holder concentration, and liquidity distribution via Helius API
+-   **Decentralized Sentiment**: Social media sentiment analysis powered by Nosana Network's decentralized GPU grid
+-   **Dynamic Reports**: Clean, responsive interface with interactive visualizations built with Next.js and ShadCN UI
 
-### Phase 4: Extended Features
--   **💰 Subscription Service**: Monitor tokens with recurring price/risk alerts powered by **Switchboard Oracle** for real-time data feeds
--   **🔔 Multi-Channel Alerts**: Receive notifications via Telegram bot with custom risk thresholds
--   **📱 Subscription Management UI**: Interactive dashboard and subscriptions page to manage monitored tokens
--   **⚡ Rate Limiting Middleware**: Tier-based rate limiting (Basic/Premium/Public) protecting API endpoints with Redis caching
--   **🖥️ CLI Tool**: Full command-line interface for analyzing tokens, managing subscriptions, checking balances, and viewing history
--   **📊 Alert History**: View and filter all triggered alerts with status tracking (delivered/failed/pending)
--   **🏛️ API Endpoints**: RESTful API with 13+ endpoints covering analysis, subscriptions, status monitoring, and system health
+### 🔔 Monitoring & Alerts
+-   **Real-Time Monitoring**: Track tokens with recurring price/risk alerts powered by Switchboard Oracle
+-   **Multi-Channel Notifications**: Telegram bot integration with customizable risk thresholds
+-   **Alert History**: Comprehensive tracking of all triggered alerts with delivery status
+-   **Subscription Management**: Interactive dashboard for managing monitored tokens
 
-### Phase 5: Solana x402 Hackathon (Current)
--   **✅ x402 Payment Protocol**: Complete integration with signature verification, nonce tracking, and receipt generation
--   **✅ Switchboard Oracle**: Real-time price feeds for premium tier monitoring
--   **✅ Cryptographic Attestations**: Ed25519-signed reports for standard/premium tiers
--   **✅ Payment Recording**: PostgreSQL-backed payment history with full audit trails
--   **✅ Transparent Receipts**: Signed receipts returned with x402-receipt-* headers
--   **✅ E2E Testing Suite**: 6-test verification covering Solana devnet and API endpoints
--   **🚀 Hackathon Ready**: Fully documented, deployed to Devnet, demo-ready
+### 🛠️ Developer Tools
+-   **RESTful API**: 13+ endpoints for analysis, subscriptions, and system health monitoring
+-   **CLI Tool**: Full command-line interface for token analysis, subscription management, and balance checking
+-   **Rate Limiting**: Tier-based protection with Redis caching
+-   **E2E Testing**: Comprehensive test suite covering Solana devnet and API endpoints
 
 ## 🚀 Technology Stack
 
@@ -66,35 +56,27 @@
 
 ## 📚 Documentation
 
-For detailed information, see:
-
-### x402 Hackathon Documentation
-- **[x402 Integration Guide](./docs/X402_INTEGRATION.md)** - Complete x402 protocol implementation with examples, security features, and client SDK usage
-- **[x402 Payment Flow](./docs/X402_PAYMENT_FLOW.md)** - Step-by-step walkthrough of the payment flow with code examples in TypeScript, Python, and Rust
-- **[E2E Testing](./docs/E2E_AUTOMATED_SETUP.md)** - Automated test suite for verifying Solana integration
-
 ### Core Documentation
-- **[API Reference](./docs/API.md)** - Complete endpoint documentation with 13+ endpoints, request/response examples, error codes, and cURL examples
-- **[Architecture](./docs/ARCHITECTURE.md)** - System design, data flow, component interactions, database schema, and deployment topology
-- **[Deployment Guide](./docs/DEPLOYMENT.md)** - Setup instructions for development and production, Docker configuration, troubleshooting, and maintenance
+- **[x402 Integration Guide](./docs/X402_INTEGRATION.md)** - Complete x402 protocol implementation with examples and security features
+- **[x402 Payment Flow](./docs/X402_PAYMENT_FLOW.md)** - Step-by-step payment flow with code examples in TypeScript, Python, and Rust
+- **[API Reference](./docs/API.md)** - Complete endpoint documentation with request/response examples and error codes
+- **[Architecture](./docs/ARCHITECTURE.md)** - System design, data flow, and component interactions
+- **[Deployment Guide](./docs/DEPLOYMENT.md)** - Setup instructions for development and production
 
 ### Additional Resources
+- **[E2E Testing](./docs/E2E_AUTOMATED_SETUP.md)** - Automated test suite for Solana integration
 - **[CLI Guide](./cli/README.md)** - Command-line tool usage and examples
-- **[Rate Limiting](./docs/RATE_LIMITING.md)** - Rate limit tier information and status headers
 - **[Infrastructure](./docs/INFRASTRUCTURE.md)** - Infrastructure setup documentation
 - **[Setup Guide](./docs/SETUP.md)** - Initial setup walkthrough
 
 ## 🎯 Quick Start
 
-Follow these instructions to get a local copy up and running for development and testing.
-
-## 🎯 Quick Start
-
 ### Prerequisites
 
--   [Node.js](https://nodejs.org/) (v18 or later)
+-   [Node.js](https://nodejs.org/) v18 or later
 -   [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 -   [Docker Desktop](https://www.docker.com/products/docker-desktop/) (for Redis & PostgreSQL)
+-   [Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools) (optional, for wallet operations)
 -   [Nosana CLI](https://docs.nosana.io/nodes/nosana-cli.html) (optional, for sentiment analysis)
 
 ### Installation
@@ -131,24 +113,31 @@ Follow these instructions to get a local copy up and running for development and
    npm run dev
    ```
 
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
+   Open [http://localhost:9002](http://localhost:9002) in your browser.
 
 ## 🎮 Usage
 
 ### Web Interface
-- Visit the dashboard at `/` to analyze tokens
-- Manage subscriptions at `/subscriptions`
-- View alert history at `/history`
+1. **Dashboard** (`/`) - Analyze token risk and view system stats
+2. **Subscriptions** (`/subscriptions`) - Manage real-time monitoring
+3. **History** (`/history`) - View triggered alerts and analysis history
 
 ### CLI Tool
 ```bash
-npm run cli analyze 0x1234567890abcdef
+# Analyze a token
+npm run cli analyze <token-address>
+
+# Create subscription
 npm run cli subscribe <token-address> --threshold 50
-npm run cli history --filter delivered
+
+# View history
+npm run cli history
+
+# Check balance
 npm run cli balance
 ```
 
-See [CLI Documentation](./cli/README.md) for all commands.
+See [CLI Documentation](./cli/README.md) for complete command reference.
 
 ### API Integration
 
@@ -216,8 +205,6 @@ console.log('Attestation:', data.report.attestation);
 ```
 
 See [x402 Integration Guide](./docs/X402_INTEGRATION.md) for complete documentation.
-
-## 🏗️ Advanced Setup
 
 ---
 
@@ -312,56 +299,37 @@ See [x402 Integration Guide](./docs/X402_INTEGRATION.md) for complete documentat
 └── docker-compose.yml  # Docker Compose for Redis & PostgreSQL
 ```
 
-## 🏗️ Advanced Setup
-
-### Optional: Deploy Nosana Sentiment Job
-
-For decentralized sentiment analysis, deploy the Nosana job:
-
-```bash
-cd nosana-job
-docker build -t your-username/sentinel-sentiment:v1 .
-docker push your-username/sentinel-sentiment:v1
-
-# Update nosana.json with your image name
-nosana job publish
-
-# Copy the Job Address to NOSANA_JOB_ID in .env.local
-```
-
-See [Deployment Guide](./docs/DEPLOYMENT.md) for detailed instructions.
+## ⚙️ Configuration
 
 ### Environment Variables
 
 ```env
-# API Keys
+# Required: API Keys
 HELIUS_API_KEY=your-helius-api-key
-SWITCHBOARD_DEVNET_KEY=your-switchboard-key
-OPENAI_API_KEY=your-openai-key
-GOOGLE_GENKIT_API_KEY=your-genkit-key
+GOOGLE_GENAI_API_KEY=your-genkit-key
 
-# Database
+# Required: Database
 DATABASE_URL=postgresql://user:password@localhost:5432/solana_sentinel
 REDIS_URL=redis://localhost:6379
 
-# Telegram Bot
-TELEGRAM_BOT_TOKEN=your-telegram-bot-token
-
-# Solana & x402
+# Required: Solana & x402
 SOLANA_RPC_URL=https://api.devnet.solana.com
 NEXT_PUBLIC_PROGRAM_ID=9bVhqoVh2wGa31AssuodP3QH7jJ8QYX27BerAham6Gsu
 NEXT_PUBLIC_NETWORK=devnet
 SENTINEL_RECEIPT_PRIVATE_KEY=your-ed25519-private-key-base58
-WEBHOOK_SECRET=your-webhook-secret
+X402_PAYMENT_RECIPIENT=your-payment-recipient-pubkey
 
-# Optional: Nosana
+# Optional: Additional Services
+SWITCHBOARD_API_KEY=your-switchboard-key
+TELEGRAM_BOT_TOKEN=your-telegram-bot-token
 NOSANA_JOB_ID=your-nosana-job-id
+WEBHOOK_SECRET=your-webhook-secret
 ```
 
-**Important x402 Keys:**
-- `SENTINEL_RECEIPT_PRIVATE_KEY`: Ed25519 private key for signing receipts and attestations (64 bytes, base58-encoded)
-- `NEXT_PUBLIC_PROGRAM_ID`: Your deployed Solana program ID (for subscription management)
-- `WEBHOOK_SECRET`: HMAC secret for webhook signature verification
+**Important Configuration Notes:**
+- `SENTINEL_RECEIPT_PRIVATE_KEY`: Ed25519 private key for signing receipts (64 bytes, base58-encoded)
+- `X402_PAYMENT_RECIPIENT`: Solana wallet address for receiving USDC payments
+- See [Environment Guide](./docs/environment.md) for detailed configuration instructions
 
 ## 🧪 Testing
 
@@ -392,86 +360,40 @@ Expected E2E output:
 ❌ Failed: 0
 ```
 
-## 🎯 System Architecture
+## 🏗️ System Architecture
 
 The application consists of:
 
 1. **Frontend** (Next.js): React-based dashboard with real-time UI
-2. **API Layer** (Next.js API Routes): RESTful endpoints with x402 payment verification
+2. **API Layer**: RESTful endpoints with x402 payment verification
 3. **x402 Middleware**: Signature verification, nonce tracking, receipt generation
-4. **Services** (TypeScript): Business logic for analysis, subscriptions, alerts
-5. **AI Engine** (Genkit): LLM-powered risk analysis and sentiment
-6. **Switchboard Oracle**: Real-time price feeds for premium tier monitoring
-7. **On-Chain Integration** (Helius/Solana): Real-time blockchain data
+4. **Business Services**: Analysis, subscription management, alert dispatching
+5. **AI Engine** (Genkit): LLM-powered risk analysis with Gemini
+6. **Switchboard Oracle**: Real-time price feeds for monitoring
+7. **Blockchain Integration**: Helius API for on-chain data
 8. **Telegram Bot**: Command-driven interface for alerts
 9. **CLI Tool**: Command-line access to all features
-10. **Cache & Queue** (Redis): Performance optimization, nonce storage
-11. **Database** (PostgreSQL): Persistent storage for payments, analyses, subscriptions
+10. **Cache Layer** (Redis): Performance optimization, nonce storage
+11. **Database** (PostgreSQL): Persistent storage for all data
 
-**x402 Payment Flow:**
+**Payment Flow:**
 ```
-Client → x402 Headers → Middleware (verify) → API Endpoint → Service Logic
-         (signature)     (nonce check)        (execute)     (record payment)
-                                                            ↓
-                                         Receipt Headers ← Receipt Signing
+Client → x402 Headers → Middleware → API Endpoint → Service
+         (signature)    (verify)      (execute)     (process)
+                                                        ↓
+                                         Response ← Receipt
 ```
 
-See [Architecture Documentation](./docs/ARCHITECTURE.md) and [x402 Payment Flow](./docs/X402_PAYMENT_FLOW.md) for detailed system design.
+See [Architecture Documentation](./docs/ARCHITECTURE.md) for detailed system design.
 
-## 🏆 Hackathon Achievements
-
-### Solana x402 Hackathon Compliance
-
-✅ **Core Requirements Met:**
-- [x] Open source code with clear README and documentation
-- [x] x402 protocol integration with payment verification
-- [x] Deployed to Solana Devnet (Program ID: `9bVhqoVh2wGa31AssuodP3QH7jJ8QYX27BerAham6Gsu`)
-- [x] Demo video ready (see `/docs/DEMO_SCRIPT.md`)
-- [x] Comprehensive documentation (13+ docs, 1000+ lines)
-
-✅ **Track-Specific Features:**
-
-**Best Trustless Agent:**
-- Cryptographic attestations for all paid analyses
-- Ed25519 signature verification on all requests
-- On-chain payment recording in PostgreSQL
-- Transparent receipt generation with signatures
-- Agent-to-agent messaging via webhooks
-
-**Best x402 API Integration:**
-- 8 required x402 headers validated
-- Tier-based pricing (basic: $0, standard: $0.10, premium: $0.50)
-- Receipt headers returned: `x402-receipt-*`
-- Payment logging with full audit trail
-- Nonce-based replay protection (Redis)
-
-**Best x402 Agent Application:**
-- CLI tool for autonomous agent operations
-- Telegram bot for real-time alerts
-- Composable API with 13+ endpoints
-- Real-world utility: token risk analysis
-- Autonomous payment handling
-
-**Switchboard Bounty:**
-- Real-time oracle price feeds integrated
-- Premium tier monitoring with Switchboard
-- Alert triggering based on price volatility
-- Devnet deployment verified
-
-### Key Metrics
-- **13+ API Endpoints** with x402 integration
-- **6 E2E Tests** covering Solana devnet
-- **3 Pricing Tiers** (basic/standard/premium)
-- **5-Minute** timestamp tolerance
-- **600-Second** nonce TTL for replay protection
-- **30-Second** oracle price cache
-- **100% Uptime** on Devnet
+## 🔒 Security
 
 - **Rate Limiting**: Tier-based limits protect against abuse
-- **Input Validation**: All user inputs are validated and sanitized
-- **Environment Variables**: Sensitive data stored in `.env.local`
+- **Input Validation**: All inputs validated and sanitized
+- **Secure Storage**: Sensitive data in environment variables only
 - **HTTPS Only**: Production endpoints require encrypted connections
-- **API Keys**: Store securely, never commit to version control
+- **Signature Verification**: Ed25519 signatures on all paid requests
+- **Replay Protection**: Nonce-based prevention with 10-minute TTL
 
 ## 🤝 Contributing
 

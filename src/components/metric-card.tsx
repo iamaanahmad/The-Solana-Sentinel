@@ -20,14 +20,14 @@ export function MetricCard({ title, value, description, status, icon }: MetricCa
   }[status];
 
   return (
-    <Card className="h-full shadow-sm hover:shadow-md transition-shadow duration-300">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+    <Card className="h-full shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
         <CardTitle className="text-sm font-medium">{title}</CardTitle>
         <div className={cn("h-5 w-5", statusColorClass)}>{icon}</div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="space-y-1">
         <div className="text-2xl font-bold">{value}</div>
-        <p className="text-xs text-muted-foreground">{description}</p>
+        <p className="text-xs text-muted-foreground mt-1">{description}</p>
       </CardContent>
     </Card>
   );

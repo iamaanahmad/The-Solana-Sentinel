@@ -15,7 +15,8 @@
     "db:test": "tsx scripts/test-connections.ts",
     "test:e2e": "node tests/e2e-runner.js",
     "test:verify": "node scripts/verify-e2e.js",
-    "test:quick": "npm run test:verify && npm run test:e2e"
+    "test:quick": "npm run test:verify && npm run test:e2e",
+    "test:attestation": "tsx scripts/test-attestation.ts"
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.32.1",

@@ -21,6 +21,14 @@ export interface AttestationMetadata {
   verified?: boolean;
 }
 
+export interface OnChainAttestationMetadata {
+  signature: string;
+  attestationPda: string;
+  slot: number;
+  blockTime: number | null;
+  explorerUrl: string;
+}
+
 export interface SentinelReportData {
   tokenAddress: string;
   tokenName: string;
@@ -47,6 +55,7 @@ export interface SentinelReportData {
   tier: X402Tier;
   switchboardOracle?: SwitchboardOracleSnapshot | null;
   attestation?: AttestationMetadata | null;
+  onChainAttestation?: OnChainAttestationMetadata | null;
   cached?: boolean;
   issuedAt: string;
 }
