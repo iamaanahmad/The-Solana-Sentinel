@@ -12,7 +12,10 @@
     "typecheck": "tsc --noEmit",
     "db:setup": "tsx scripts/setup-db.ts",
     "db:migrate": "tsx migrations/run-migrations.ts",
-    "db:test": "tsx scripts/test-connections.ts"
+    "db:test": "tsx scripts/test-connections.ts",
+    "test:e2e": "node tests/e2e-runner.js",
+    "test:verify": "node scripts/verify-e2e.js",
+    "test:quick": "npm run test:verify && npm run test:e2e"
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.32.1",
@@ -40,9 +43,10 @@
     "@radix-ui/react-tabs": "^1.1.3",
     "@radix-ui/react-toast": "^1.2.6",
     "@radix-ui/react-tooltip": "^1.1.8",
+    "@solana/spl-token": "^0.4.14",
     "@solana/web3.js": "^1.98.4",
-  "@switchboard-xyz/on-demand": "^3.2.2",
-  "bs58": "^6.0.0",
+    "@switchboard-xyz/on-demand": "^3.2.2",
+    "bs58": "^6.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "commander": "^14.0.2",
@@ -64,13 +68,13 @@
     "recharts": "^2.15.1",
     "redis": "^5.9.0",
     "tailwind-merge": "^3.0.1",
-  "tailwindcss-animate": "^1.0.7",
-  "tweetnacl": "^1.0.3",
+    "tailwindcss-animate": "^1.0.7",
+    "tweetnacl": "^1.0.3",
     "zod": "^3.24.2"
   },
   "devDependencies": {
-  "@types/bs58": "^4.0.3",
-  "@types/node": "^20",
+    "@types/bs58": "^4.0.3",
+    "@types/node": "^20.19.25",
     "@types/node-telegram-bot-api": "^0.64.12",
     "@types/pg": "^8.15.6",
     "@types/react": "^18",
@@ -78,6 +82,7 @@
     "genkit-cli": "^1.13.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
     "tsx": "^4.20.6",
     "typescript": "^5"
   }

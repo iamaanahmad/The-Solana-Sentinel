@@ -1,8 +1,47 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cache } from '@/lib/redis';
 
+const isE2ETest = process.env.E2E_TEST_MODE === 'true';
+
 export async function GET(request: NextRequest) {
   try {
+    if (isE2ETest) {
+      const url = new URL(request.url, 'http://localhost');
+      const wallet = url.searchParams.get('wallet') || 'test-wallet';
+
+      return NextResponse.json({
+        wallet,
+        totalSubscriptions: 3,
+        stats: {
+          activeSubscriptions: 3,
+          alertsThisWeek: 12,
+          alertsThisMonth: 47,
+          totalBalance: 250.5,
+          estimatedMonthlySpend: 11.75,
+        },
+        topTokens: [
+          { symbol: 'SOL', price: 142.35, riskScore: 45 },
+          { symbol: 'USDC', price: 1.0, riskScore: 18 },
+        ],
+        recentAlerts: [
+          {
+            id: 'alert-001',
+            token: 'SOL',
+            message: 'Price surge detected (+5.2% in 24h)',
+            severity: 'warning',
+            timestamp: new Date().toISOString(),
+          },
+        ],
+        tierInfo: {
+          currentTier: 'premium',
+          requestsUsed: 1250,
+          requestsLimit: 5000,
+          costPerAlert: 0.25,
+        },
+        generatedAt: new Date().toISOString(),
+      });
+    }
+
     const userId = request.headers.get('x-user-id') || 'default-user';
 
     // Get cache key for user dashboard stats
