@@ -9,9 +9,13 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { AlertCircle, Plus, Trash2, TrendingUp, Shield, Clock } from 'lucide-react';
+import { AlertCircle, Plus, Trash2, TrendingUp, TrendingDown, Shield, Clock, Pause, Play, Zap } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+import Link from 'next/link';
+import { Logo } from '@/components/logo';
 
 interface Subscription {
   subscription_id: string;
@@ -36,53 +40,6 @@ export default function SubscriptionsPage() {
   // Form state
   const [tokenAddress, setTokenAddress] = useState('');
   const [riskThreshold, setRiskThreshold] = useState(75);
-import { useToast } from '@/hooks/use-toast';
-import {
-  Trash2,
-  Pause,
-  Play,
-  AlertCircle,
-  TrendingDown,
-  TrendingUp,
-  Zap,
-} from 'lucide-react';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
-import Link from 'next/link';
-
-interface Subscription {
-  id: string;
-  token: string;
-  symbol: string;
-  address: string;
-  riskThreshold: number;
-  currentPrice: number;
-  priceChange24h: number;
-  riskScore: number;
-  status: 'active' | 'paused' | 'alert';
-  alertsThisWeek: number;
-  createdAt: string;
-}
-
-export default function SubscriptionsPage() {
-  const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
-  const [loading, setLoading] = useState(true);
-  const { toast } = useToast();
 
   useEffect(() => {
     fetchSubscriptions();
