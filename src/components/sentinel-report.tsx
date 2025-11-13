@@ -3,16 +3,20 @@
 import type { SentinelReportData } from '@/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ScoreDisplay } from './score-display';
-import { Bot, BarChart4, Smile, BadgeCheck, BadgeAlert, Copy, ExternalLink, TrendingUp, Link2, Shield } from 'lucide-react';
+import { Bot, BarChart4, Smile, BadgeCheck, BadgeAlert, Copy, ExternalLink, TrendingUp, Link2, Shield, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { useState } from 'react';
+import { PDFExportService } from '@/services/pdf-export.service';
+import { useToast } from '@/hooks/use-toast';
 
 export function SentinelReport({ report }: { report: SentinelReportData }) {
   const { sentinelScore, tokenName, tokenSymbol, aiAnalysis, onChainAnalysis, sentimentAnalysis, tokenAddress } = report;
   const [copied, setCopied] = useState(false);
+  const [exporting, setExporting] = useState(false);
+  const { toast } = useToast();
 
   const riskLevel = aiAnalysis.riskLevel;
   const riskColorClass = {
@@ -39,6 +43,28 @@ export function SentinelReport({ report }: { report: SentinelReportData }) {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleExportPDF = async () => {
+    setExporting(true);
+    try {
+      const analysisId = `SA-${Date.now()}`;
+      const pdfBlob = await PDFExportService.exportAnalysis(report, analysisId);
+      const filename = `${tokenSymbol}_Analysis_${new Date().toISOString().split('T')[0]}.pdf`;
+      PDFExportService.downloadPDF(pdfBlob, filename);
+      toast({
+        title: "PDF Exported",
+        description: `Analysis report saved as ${filename}`,
+      });
+    } catch (error) {
+      toast({
+        title: "Export Failed",
+        description: "Could not generate PDF. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setExporting(false);
+    }
+  };
+
   return (
     <Card className="shadow-2xl border-2 backdrop-blur-sm bg-card/95 animate-in fade-in duration-500" role="region" aria-label="Token Analysis Report">
       <CardHeader className="space-y-4 pb-6">
@@ -61,6 +87,17 @@ export function SentinelReport({ report }: { report: SentinelReportData }) {
               >
                 <Copy className="h-3 w-3" />
                 {copied && <span className="ml-1 text-xs">Copied!</span>}
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={handleExportPDF}
+                disabled={exporting}
+                className="h-6 px-2"
+                aria-label="Export to PDF"
+              >
+                <Download className="h-3 w-3" />
+                {exporting && <span className="ml-1 text-xs">Exporting...</span>}
               </Button>
               <Button 
                 variant="ghost" 

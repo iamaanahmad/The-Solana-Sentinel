@@ -10,6 +10,29 @@
 
 ---
 
+## 🏆 Built for x402 Protocol Hackathon
+
+**Late Start, High Ambition** — When we discovered this hackathon late in the submission period, most teams were already well into development. However, the x402 protocol's innovative approach to payment verification immediately resonated with our vision for secure, decentralized infrastructure on Solana.
+
+Rather than rushing a minimal viable product, we committed to building **production-grade infrastructure** that showcases the full potential of x402's cryptographic payment verification system. This repository represents intensive focused development to create a platform that:
+
+- **🔐 Demonstrates Real Security**: Not just conceptual integration, but comprehensive Ed25519 signature verification, replay attack prevention, and cryptographic receipts
+- **⛓️ Leverages Blockchain Uniquely**: Premium tier includes **permanent on-chain attestations** — making us potentially the only hackathon project storing verifiable analysis results directly on Solana
+- **🤖 Combines Multiple AI Systems**: Google Gemini for risk analysis + Nosana Network's decentralized GPU grid for sentiment analysis
+- **📊 Delivers Enterprise Value**: Multi-channel access (Web, API, CLI, Telegram bot), real-time monitoring with Switchboard Oracle, and professional UI/UX
+- **💰 Implements x402 Correctly**: Complete payment flow with tiered access, transparent pricing, nonce-based security, and signed receipts
+
+**Key Differentiators:**
+- **On-Chain Attestations** (Unique!) — Premium analyses are cryptographically signed and stored on-chain with verifiable PDAs
+- **Comprehensive x402 Integration** — Full protocol implementation with signature verification, replay protection, and transparent receipts
+- **Multi-Channel Architecture** — Web dashboard, RESTful API, CLI tool, and Telegram bot all sharing the same secure payment verification
+- **Production-Ready** — Complete with E2E tests, comprehensive documentation, rate limiting, and deployment guides
+- **Real Decentralization** — Nosana Network for AI compute + Switchboard Oracle for price feeds = truly decentralized stack
+
+This project proves x402's viability for real-world applications while providing genuine value to the Solana ecosystem through AI-powered token risk analysis.
+
+---
+
 ## ✨ Key Features
 
 ### 🔒 x402 Protocol Integration

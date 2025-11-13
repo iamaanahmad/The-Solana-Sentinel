@@ -1,9 +1,41 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { Logo } from '@/components/logo';
+import { useState, useEffect } from 'react';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { WalletConnection } from '@/components/web3-wallet';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { AlertCircle, Plus, Trash2, TrendingUp, Shield, Clock } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { useToast } from '@/hooks/use-toast';
+
+interface Subscription {
+  subscription_id: string;
+  token_address: string;
+  agent_pubkey: string;
+  webhook_url: string;
+  thresholds: { risk_score?: number };
+  status: 'active' | 'paused' | 'cancelled';
+  prepaid_balance: number;
+  alerts_triggered: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export default function SubscriptionsPage() {
+  const { connected, publicKey } = useWallet();
+  const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [showCreateDialog, setShowCreateDialog] = useState(false);
+  const { toast } = useToast();
+
+  // Form state
+  const [tokenAddress, setTokenAddress] = useState('');
+  const [riskThreshold, setRiskThreshold] = useState(75);
 import { useToast } from '@/hooks/use-toast';
 import {
   Trash2,

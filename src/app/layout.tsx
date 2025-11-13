@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
+import { SolanaWalletProvider } from '@/providers/wallet-provider';
 
 export const metadata: Metadata = {
   title: 'The Solana Sentinel - AI-Powered Token Risk Analysis',
@@ -29,8 +30,10 @@ export default function RootLayout({
         <meta name="theme-color" content="#1e293b" />
       </head>
       <body className="font-body antialiased">
-        {children}
-        <Toaster />
+        <SolanaWalletProvider>
+          {children}
+          <Toaster />
+        </SolanaWalletProvider>
       </body>
     </html>
   );
