@@ -1,5 +1,7 @@
 import { SubscriptionService } from './subscription.service';
 import * as cache from '@/lib/redis';
+import { Connection, PublicKey } from '@solana/web3.js';
+import { AggregatorAccount } from '@switchboard-xyz/on-demand';
 
 interface SwitchboardFeed {
   address: string;
@@ -7,6 +9,7 @@ interface SwitchboardFeed {
   currentPrice: number;
   lastUpdate: number;
   decimals: number;
+  aggregatorAccount?: AggregatorAccount;
 }
 
 interface PriceThreshold {
@@ -25,29 +28,49 @@ export class SwitchboardService {
   private feeds: Map<string, SwitchboardFeed> = new Map();
   private monitoringIntervals: Map<string, NodeJS.Timeout> = new Map();
   private readonly CACHE_TTL = 30; // 30 seconds for price feed cache
+  private connection: Connection;
+
+  // Known Switchboard feed addresses on Solana Devnet
+  private static readonly FEED_ADDRESSES: Record<string, string> = {
+    'SOL': 'GvDMxPzN1sCj7L26YDK2HnMRXEQmQ2aemov8YBtPS7vR', // SOL/USD feed
+    'USDC': 'EN8VVdMREWhH7B6BqH9LYdnLo6aN9f7Z4H6kxXCpVHd7', // USDC/USD feed
+    'USDT': 'Gnt27xtC473ZT2Mw5u8wZ68Z3gULkSTb5DuxJy7eJotD', // USDT/USD feed
+  };
+
+  constructor(connection?: Connection) {
+    this.connection = connection || new Connection(
+      process.env.SOLANA_RPC_URL || 'https://api.devnet.solana.com'
+    );
+  }
 
   /**
    * Initialize and connect to Switchboard feeds
    */
-  static async initialize(): Promise<SwitchboardService> {
-    const service = new SwitchboardService();
+  static async initialize(connection?: Connection): Promise<SwitchboardService> {
+    const service = new SwitchboardService(connection);
     console.log('🔌 Initializing Switchboard Oracle Service...');
 
     try {
-      // Initialize feeds from Switchboard
-      // This would connect to actual Switchboard feeds in production
-      console.log('✅ Switchboard service initialized');
+      // Test connection to a known feed
+      const solFeedAddress = new PublicKey(SwitchboardService.FEED_ADDRESSES['SOL']);
+      const aggregatorAccount = new AggregatorAccount(service.connection, solFeedAddress);
+      
+      // Verify we can load the feed
+      await aggregatorAccount.fetchLatestValue();
+      
+      console.log('✅ Switchboard service initialized with real oracle feeds');
       return service;
     } catch (error) {
       console.error('❌ Error initializing Switchboard service:', error);
-      throw error;
+      console.warn('⚠️  Falling back to API-based price fetching');
+      return service;
     }
   }
 
   /**
    * Start monitoring a token price
    */
-  async startMonitoring(tokenAddress: string, feedAddress: string): Promise<void> {
+  async startMonitoring(tokenAddress: string, feedAddress?: string): Promise<void> {
     try {
       // Check if already monitoring
       if (this.monitoringIntervals.has(tokenAddress)) {
@@ -57,16 +80,35 @@ export class SwitchboardService {
 
       console.log(`📡 Starting to monitor ${tokenAddress}...`);
 
+      // Determine feed address from token
+      const feedPubkey = feedAddress ? new PublicKey(feedAddress) : this.getFeedAddressForToken(tokenAddress);
+      
+      if (!feedPubkey) {
+        throw new Error(`No Switchboard feed found for token ${tokenAddress}`);
+      }
+
+      // Initialize Switchboard aggregator
+      const aggregatorAccount = new AggregatorAccount(this.connection, feedPubkey);
+      
       // Fetch initial price
-      const price = await this.fetchPrice(feedAddress, tokenAddress);
+      let price: number;
+      try {
+        const result = await aggregatorAccount.fetchLatestValue();
+        price = result?.toNumber() || 0;
+        console.log(`✅ Fetched price from Switchboard oracle: ${price}`);
+      } catch (error) {
+        console.warn('⚠️  Failed to fetch from Switchboard, using fallback API');
+        price = await this.fetchPriceFromApi(tokenAddress);
+      }
 
       // Store feed info
       this.feeds.set(tokenAddress, {
-        address: feedAddress,
+        address: feedPubkey.toBase58(),
         tokenAddress,
         currentPrice: price,
         lastUpdate: Date.now(),
         decimals: 8, // Standard Switchboard decimal precision
+        aggregatorAccount,
       });
 
       // Set up periodic monitoring (check every 5 seconds)
@@ -105,6 +147,24 @@ export class SwitchboardService {
   }
 
   /**
+   * Get Switchboard feed address for a token
+   */
+  private getFeedAddressForToken(tokenAddress: string): PublicKey | null {
+    // Map common token addresses to Switchboard feeds
+    const tokenToFeed: Record<string, string> = {
+      // SOL
+      'So11111111111111111111111111111111111111112': SwitchboardService.FEED_ADDRESSES['SOL'],
+      // USDC (Devnet)
+      'EPjFWaLb3bSsKUXUK94L2KEMMGiYNEvpNqpXbtEsFbaJ': SwitchboardService.FEED_ADDRESSES['USDC'],
+      // USDT (Devnet)
+      'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenEb9': SwitchboardService.FEED_ADDRESSES['USDT'],
+    };
+
+    const feedAddress = tokenToFeed[tokenAddress];
+    return feedAddress ? new PublicKey(feedAddress) : null;
+  }
+
+  /**
    * Fetch current price from Switchboard feed
    */
   private async fetchPrice(feedAddress: string, tokenAddress: string): Promise<number> {
@@ -117,8 +177,24 @@ export class SwitchboardService {
         return cached.price;
       }
 
-      // In production, this would fetch from actual Switchboard oracle
-      // For now, we'll fetch from a public API and cache it
+      // Try fetching from Switchboard oracle
+      const feed = this.feeds.get(tokenAddress);
+      if (feed?.aggregatorAccount) {
+        try {
+          const result = await feed.aggregatorAccount.fetchLatestValue();
+          const price = result?.toNumber() || 0;
+          
+          if (price > 0) {
+            // Cache for 30 seconds
+            await cache.cache.set(cacheKey, { price }, this.CACHE_TTL);
+            return price;
+          }
+        } catch (error) {
+          console.warn(`⚠️  Switchboard fetch failed for ${tokenAddress}, using fallback`);
+        }
+      }
+
+      // Fallback to API if Switchboard fails
       const price = await this.fetchPriceFromApi(tokenAddress);
 
       // Cache for 30 seconds
