@@ -1,0 +1,114 @@
+2026-01-01T09:54:39.823048401Z [09:54:39] [open-runtimes] Environment preparation started. 
+2026-01-01T09:54:39.952211328Z [09:54:39] [open-runtimes] Environment preparation finished. 
+2026-01-01T09:54:39.957583559Z [09:54:39] [open-runtimes] Build command execution started. 
+2026-01-01T09:54:52.526801428Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+2026-01-01T09:54:54.843144556Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2026-01-01T09:54:58.835950774Z npm warn deprecated @types/handlebars@4.1.0: This is a stub types definition. handlebars provides its own type definitions, so you do not need this installed.
+2026-01-01T09:55:06.028042021Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2026-01-01T09:56:09.951969550Z 
+2026-01-01T09:56:09.952195467Z > nextn@0.1.0 postinstall
+2026-01-01T09:56:09.952200679Z > patch-package
+2026-01-01T09:56:09.952203673Z 
+2026-01-01T09:56:10.638236449Z patch-package 8.0.0
+2026-01-01T09:56:10.638558823Z Applying patches...
+2026-01-01T09:56:10.639568408Z No patch files found
+2026-01-01T09:56:10.734960133Z 
+2026-01-01T09:56:10.734989770Z added 716 packages, and audited 717 packages in 2m
+2026-01-01T09:56:10.734995018Z 
+2026-01-01T09:56:10.735000519Z 96 packages are looking for funding
+2026-01-01T09:56:10.735004960Z   run `npm fund` for details
+2026-01-01T09:56:11.039083144Z 
+2026-01-01T09:56:11.039116467Z 16 vulnerabilities (5 low, 2 moderate, 7 high, 2 critical)
+2026-01-01T09:56:11.039120998Z 
+2026-01-01T09:56:11.039125969Z To address all issues, run:
+2026-01-01T09:56:11.039130468Z   npm audit fix
+2026-01-01T09:56:11.039134419Z 
+2026-01-01T09:56:11.039139069Z Run `npm audit` for details.
+2026-01-01T09:56:11.641313409Z 
+2026-01-01T09:56:11.641339859Z > nextn@0.1.0 build
+2026-01-01T09:56:11.641345142Z > next build
+2026-01-01T09:56:11.641349350Z 
+2026-01-01T09:56:11.967706561Z  ⚠ You are using a non-standard "NODE_ENV" value in your environment. This creates inconsistencies in the project and is strongly advised against. Read more: https://nextjs.org/docs/messages/non-standard-node-env
+2026-01-01T09:56:14.040225301Z ⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+2026-01-01T09:56:14.229153189Z    ▲ Next.js 15.3.5
+2026-01-01T09:56:14.229209594Z 
+2026-01-01T09:56:14.245158751Z    Creating an optimized production build ...
+2026-01-01T09:57:10.132471045Z  ⚠ Compiled with warnings in 52s
+2026-01-01T09:57:10.133863582Z 
+2026-01-01T09:57:10.133897991Z ./node_modules/@opentelemetry/sdk-node/build/src/TracerProviderWithEnvExporter.js
+2026-01-01T09:57:10.133905414Z Module not found: Can't resolve '@opentelemetry/exporter-jaeger' in '/usr/local/build/node_modules/@opentelemetry/sdk-node/build/src'
+2026-01-01T09:57:10.133929331Z 
+2026-01-01T09:57:10.133934953Z Import trace for requested module:
+2026-01-01T09:57:10.133939391Z ./node_modules/@opentelemetry/sdk-node/build/src/TracerProviderWithEnvExporter.js
+2026-01-01T09:57:10.133944668Z ./node_modules/@opentelemetry/sdk-node/build/src/sdk.js
+2026-01-01T09:57:10.133949280Z ./node_modules/@opentelemetry/sdk-node/build/src/index.js
+2026-01-01T09:57:10.133953297Z ./node_modules/@genkit-ai/core/lib/tracing.js
+2026-01-01T09:57:10.133957518Z ./node_modules/genkit/lib/tracing.js
+2026-01-01T09:57:10.133961689Z ./node_modules/genkit/lib/genkit.js
+2026-01-01T09:57:10.133977536Z ./node_modules/genkit/lib/index.mjs
+2026-01-01T09:57:10.133981794Z ./src/ai/flows/summarize-risk-factors.ts
+2026-01-01T09:57:10.133986170Z ./app/actions.ts
+2026-01-01T09:57:10.133989839Z 
+2026-01-01T09:57:10.134009814Z ./node_modules/handlebars/lib/index.js
+2026-01-01T09:57:10.134015406Z require.extensions is not supported by webpack. Use a loader instead.
+2026-01-01T09:57:10.134019147Z 
+2026-01-01T09:57:10.134023294Z Import trace for requested module:
+2026-01-01T09:57:10.134027325Z ./node_modules/handlebars/lib/index.js
+2026-01-01T09:57:10.134031456Z ./node_modules/dotprompt/dist/index.js
+2026-01-01T09:57:10.134035384Z ./node_modules/@genkit-ai/core/lib/registry.js
+2026-01-01T09:57:10.134039485Z ./node_modules/genkit/lib/registry.js
+2026-01-01T09:57:10.134043523Z ./node_modules/genkit/lib/genkit.js
+2026-01-01T09:57:10.134047556Z ./node_modules/genkit/lib/index.mjs
+2026-01-01T09:57:10.134051500Z ./src/ai/flows/summarize-risk-factors.ts
+2026-01-01T09:57:10.134055667Z ./app/actions.ts
+2026-01-01T09:57:10.134059245Z 
+2026-01-01T09:57:10.134063346Z ./node_modules/handlebars/lib/index.js
+2026-01-01T09:57:10.134067319Z require.extensions is not supported by webpack. Use a loader instead.
+2026-01-01T09:57:10.134085845Z 
+2026-01-01T09:57:10.134091311Z Import trace for requested module:
+2026-01-01T09:57:10.134095438Z ./node_modules/handlebars/lib/index.js
+2026-01-01T09:57:10.134099588Z ./node_modules/dotprompt/dist/index.js
+2026-01-01T09:57:10.134103572Z ./node_modules/@genkit-ai/core/lib/registry.js
+2026-01-01T09:57:10.134107781Z ./node_modules/genkit/lib/registry.js
+2026-01-01T09:57:10.134111913Z ./node_modules/genkit/lib/genkit.js
+2026-01-01T09:57:10.134115856Z ./node_modules/genkit/lib/index.mjs
+2026-01-01T09:57:10.134119800Z ./src/ai/flows/summarize-risk-factors.ts
+2026-01-01T09:57:10.134124083Z ./app/actions.ts
+2026-01-01T09:57:10.134128035Z 
+2026-01-01T09:57:10.134131979Z ./node_modules/handlebars/lib/index.js
+2026-01-01T09:57:10.134136102Z require.extensions is not supported by webpack. Use a loader instead.
+2026-01-01T09:57:10.134139696Z 
+2026-01-01T09:57:10.134143767Z Import trace for requested module:
+2026-01-01T09:57:10.134163157Z ./node_modules/handlebars/lib/index.js
+2026-01-01T09:57:10.134168754Z ./node_modules/dotprompt/dist/index.js
+2026-01-01T09:57:10.134173085Z ./node_modules/@genkit-ai/core/lib/registry.js
+2026-01-01T09:57:10.134177090Z ./node_modules/genkit/lib/registry.js
+2026-01-01T09:57:10.134181190Z ./node_modules/genkit/lib/genkit.js
+2026-01-01T09:57:10.134185238Z ./node_modules/genkit/lib/index.mjs
+2026-01-01T09:57:10.134189248Z ./src/ai/flows/summarize-risk-factors.ts
+2026-01-01T09:57:10.134193393Z ./app/actions.ts
+2026-01-01T09:57:10.134197190Z 
+2026-01-01T09:57:44.546773685Z  ✓ Compiled successfully in 79s
+2026-01-01T09:57:44.548750061Z    Skipping validation of types
+2026-01-01T09:57:44.548868488Z    Skipping linting
+2026-01-01T09:57:45.349043043Z    Collecting page data ...
+2026-01-01T09:58:02.624050520Z    Generating static pages (0/4) ...
+2026-01-01T09:58:06.528123684Z Error: <Html> should not be imported outside of pages/_document.
+2026-01-01T09:58:06.528173626Z Read more: https://nextjs.org/docs/messages/no-document-import-in-page
+2026-01-01T09:58:06.528179703Z     at y (.next/server/chunks/548.js:6:1351)
+2026-01-01T09:58:06.528185016Z Error occurred prerendering page "/404". Read more: https://nextjs.org/docs/messages/prerender-error
+2026-01-01T09:58:06.528189021Z Error: <Html> should not be imported outside of pages/_document.
+2026-01-01T09:58:06.528193173Z Read more: https://nextjs.org/docs/messages/no-document-import-in-page
+2026-01-01T09:58:06.528227414Z     at K (/usr/local/build/node_modules/next/dist/compiled/next-server/pages.runtime.prod.js:16:6526)
+2026-01-01T09:58:06.528231986Z     at y (/usr/local/build/.next/server/chunks/548.js:6:1351)
+2026-01-01T09:58:06.528237172Z     at renderWithHooks (/usr/local/build/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5658:16)
+2026-01-01T09:58:06.528246300Z     at renderIndeterminateComponent (/usr/local/build/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5732:15)
+2026-01-01T09:58:06.528250264Z     at renderElement (/usr/local/build/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5957:7)
+2026-01-01T09:58:06.528254134Z     at renderNodeDestructiveImpl (/usr/local/build/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6115:11)
+2026-01-01T09:58:06.528257674Z     at renderNodeDestructive (/usr/local/build/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6087:14)
+2026-01-01T09:58:06.528261875Z     at finishClassComponent (/usr/local/build/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5688:3)
+2026-01-01T09:58:06.528265531Z     at renderClassComponent (/usr/local/build/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5696:3)
+2026-01-01T09:58:06.528269620Z     at renderElement (/usr/local/build/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5954:7)
+2026-01-01T09:58:06.528274080Z Export encountered an error on /_error: /404, exiting the build.
+2026-01-01T09:58:06.621058052Z  ⨯ Next.js build worker exited with code: 1 and signal: null
+2026-01-01T09:58:11.000000000Z Unexpected error occurred. Please try again.
